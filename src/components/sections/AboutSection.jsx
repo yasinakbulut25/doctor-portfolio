@@ -9,7 +9,7 @@ import { Button } from "@nextui-org/react";
 
 function AboutSection() {
   return (
-    <section className="mt-12" id="hakkimda">
+    <section className="mb-12" id="hakkimda">
       <SectionTitle
         title="Beni Tanıyın"
         subTitle="Hakkımda"

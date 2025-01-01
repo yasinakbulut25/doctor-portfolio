@@ -63,7 +63,7 @@ function CommentsSection() {
   };
 
   return (
-    <section className="mt-12" id="yorumlar">
+    <section className="mb-12" id="yorumlar">
       <SectionTitle
         title="Ziyaretçi Görüşleri"
         subTitle="Yorumlar"

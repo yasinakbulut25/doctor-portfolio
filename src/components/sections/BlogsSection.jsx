@@ -28,7 +28,7 @@ function BlogsSection() {
   ];
 
   return (
-    <section className="mx-auto max-w-7xl mt-12" id="yazilar">
+    <section className="mx-auto max-w-7xl mb-12" id="yazilar">
       <SectionTitle
         title="Sağlık İçin Bilgi"
         subTitle="Yazılarım"

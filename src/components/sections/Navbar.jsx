@@ -8,7 +8,6 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerBody,
-  DrawerFooter,
   Button,
   useDisclosure,
 } from "@nextui-org/react";
@@ -18,6 +17,13 @@ function Navbar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [isHomePage, setIsHomePage] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsHomePage(window.location.pathname === "/");
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,27 +42,29 @@ function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
+    if (isHomePage) {
+      const sections = document.querySelectorAll("section");
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        threshold: 0.5,
-      }
-    );
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveSection(entry.target.id);
+            }
+          });
+        },
+        {
+          threshold: 0.5,
+        }
+      );
 
-    sections.forEach((section) => observer.observe(section));
+      sections.forEach((section) => observer.observe(section));
 
-    return () => {
-      sections.forEach((section) => observer.unobserve(section));
-    };
-  }, []);
+      return () => {
+        sections.forEach((section) => observer.unobserve(section));
+      };
+    }
+  }, [isHomePage]);
 
   return (
     <nav

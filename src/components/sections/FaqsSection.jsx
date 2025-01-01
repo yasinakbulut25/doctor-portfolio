@@ -33,7 +33,7 @@ function FaqsSection() {
   ];
 
   return (
-    <section className="md:container mx-auto px-4 mt-12" id="sss">
+    <section className="md:container mx-auto px-4 mb-12" id="sss">
       <SectionTitle
         title="Sıkça Sorulan Sorular"
         subTitle="SSS"

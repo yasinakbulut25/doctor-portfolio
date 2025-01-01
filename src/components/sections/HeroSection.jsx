@@ -5,7 +5,7 @@ import { DotPattern } from "@/components/ui/dot-pattern";
 
 function HeroSection() {
   return (
-    <section className="relative" id="ana-sayfa">
+    <section className="relative mb-12" id="ana-sayfa">
       <div className="relative pb-6 px-4 ml-auto">
         <div className="lg:w-2/3 text-center mx-auto flex flex-col md:gap-10 gap-6 items-center">
           <BlurFade delay={0.25} inView>

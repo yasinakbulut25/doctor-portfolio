@@ -38,7 +38,7 @@ function ServicesSection() {
   ];
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 mt-12" id="hizmetler">
+    <section className="w-full max-w-7xl mx-auto px-4 mb-12" id="hizmetler">
       <SectionTitle
         title="Sizin İçin Yanınızdayız!"
         subTitle="Hizmetlerimiz"
