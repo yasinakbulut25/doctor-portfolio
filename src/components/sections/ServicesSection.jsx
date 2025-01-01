@@ -11,7 +11,7 @@ function ServicesSection() {
         "Doğal yollarla çocuk sahibi olamayan çiftler için etkili bir tedavi yöntemidir. Laboratuvar ortamında döllenen embriyo rahme yerleştirilir, süreç kişiye özel planlanır.",
     },
     {
-      title: "Kadın Sağlığı Kontrolleri ve Jinekolojik Muayene",
+      title: "Kadın Sağlığı Kontrolleri",
       description:
         "Kadın sağlığını korumak ve hastalıkları erken teşhis etmek için düzenli kontroller yapılır. Rahim, yumurtalık ve diğer üreme organları detaylı incelenir.",
     },
@@ -38,7 +38,7 @@ function ServicesSection() {
   ];
 
   return (
-    <section className="md:container mx-auto px-4 mt-12" id="hizmetler">
+    <section className="w-full max-w-7xl mx-auto px-4 mt-12" id="hizmetler">
       <SectionTitle
         title="Sizin İçin Yanınızdayız!"
         subTitle="Hizmetlerimiz"

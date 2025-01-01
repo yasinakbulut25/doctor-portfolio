@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/accordion";
 import SectionTitle from "./SectionTitle";
 import { QuestionCircleIcon } from "@/icons";
+import BlurFade from "@/components/ui/blur-fade";
 
 function FaqsSection() {
   const faqs = [
@@ -39,16 +40,20 @@ function FaqsSection() {
         description="Merak ettiğiniz konularla ilgili sıkça sorulan sorulara göz atın."
         icon={<QuestionCircleIcon className="w-4 h-4" color="#9c40ff" />}
       />
-      <div className="max-w-3xl mx-auto">
-        <Accordion type="multiple">
-          {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger className='[&[data-state=open]]:text-purple-600'>{faq.question}</AccordionTrigger>
-              <AccordionContent>{faq.answer}</AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
+      <BlurFade delay={0.5} inView>
+        <div className="max-w-3xl mx-auto">
+          <Accordion type="multiple">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger className="[&[data-state=open]]:text-purple-600">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent>{faq.answer}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </BlurFade>
     </section>
   );
 }
