@@ -16,7 +16,7 @@ function AboutSection() {
         description="Hayat hikayem, değerlerim ve profesyonel deneyimlerim hakkında bilgi edinin."
         icon={<UserIcon className="w-4 h-4" color="#9c40ff" />}
       />
-      <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+      <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 items-center gap-8 px-4">
         <BlurFade delay={0.5} inView>
           <p className="text-md text-black font-medium mx-auto">
             <span className="block mb-4 text-purple-600 font-bold">

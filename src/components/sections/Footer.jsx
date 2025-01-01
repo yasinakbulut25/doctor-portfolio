@@ -26,19 +26,21 @@ function Footer() {
           </div>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400 mb-3">
-          © 2025 Tüm hakkları saklıdır.
-        </span>
-        <i className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
-          developed by{" "}
-          <a
-            href="https://www.linkedin.com/in/yasinakbulut/"
-            target="_blank"
-            className="font-semibold hover:text-purple-500"
-          >
-            Yasin Akbulut
-          </a>
-        </i>
+        <div className="flex flex-col items-center justify-center gap-3 text-center">
+          <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
+            © 2025 Tüm hakkları saklıdır.
+          </span>
+          <i className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
+            developed by{" "}
+            <a
+              href="https://www.linkedin.com/in/yasinakbulut/"
+              target="_blank"
+              className="font-semibold hover:text-purple-500"
+            >
+              Yasin Akbulut
+            </a>
+          </i>
+        </div>
       </div>
     </footer>
   );

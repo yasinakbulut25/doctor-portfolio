@@ -14,7 +14,7 @@ function AboutPage() {
         description="Hayat hikayem, değerlerim ve profesyonel deneyimlerim hakkında bilgi edinin."
         icon={<UserIcon className="w-4 h-4" color="#9c40ff" />}
       />
-      <div className="flex flex-col items-center gap-8">
+      <div className="flex flex-col items-center gap-8 mb-12">
         <BlurFade delay={0.5} inView>
           <p className="text-md text-black font-medium mx-auto max-w-4xl text-center text-pretty">
             <span className="block mb-4 text-purple-600 font-bold">
