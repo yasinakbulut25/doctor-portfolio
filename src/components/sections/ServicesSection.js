@@ -40,11 +40,11 @@ function ServicesSection() {
       />
       <div className="columns-1 sm:columns-2 lg:columns-3">
         {services.map((service, index) => (
-          <BlurFade key={index} className='mb-8' delay={0.25 + index * 0.05} inView>
+          <BlurFade key={index} className='mb-8' delay={0.25 + index * 0.15} inView>
             <div className="relative w-full sm:max-w-full max-w-[400px] mx-auto p-8 bg-white shadow-lg hover:scale-105 duration-300 rounded-lg overflow-hidden">
               <div className="flex flex-col gap-3">
-                <div aria-hidden="true" className="absolute top-0 right-0 w-1/2 opacity-40 dark:opacity-20">
-                  <div className="blur-[140px] h-12 bg-gradient-to-br from-purple-600 to-purple-400 dark:from-blue-700" />
+                <div aria-hidden="true" className="absolute top-0 right-0 w-1/2 opacity-40">
+                  <div className="blur-[140px] h-12 bg-gradient-to-br from-purple-600 to-purple-400" />
                 </div>
                 <Image
                   className="object-contain rounded-lg mb-3"
