@@ -1,11 +1,10 @@
 import { ChevronRight, PenIcon } from "@/icons";
 import { Button, Link } from "@nextui-org/react";
 import Image from "next/image";
-import React from "react";
-import SectionTitle from "./SectionTitle";
 import BlurFade from "@/components/ui/blur-fade";
+import SectionTitle from "@/components/sections/SectionTitle";
 
-function BlogsSection() {
+function Blogs() {
   const blogPosts = [
     {
       title: "Hamilelikte Sağlıklı Beslenmenin Önemi ve Altın Kurallar",
@@ -24,6 +23,42 @@ function BlogsSection() {
       date: "18.01.2025",
       imageSrc: "/images/image.png",
       link: "/blog/saglikli-yasam-icin-altin-kural",
+    },
+    {
+      title: "Kadın Sağlığında Dikkat Edilmesi Gerekenler",
+      date: "15.01.2025",
+      imageSrc: "/images/image.png",
+      link: "/blog/kadin-sagligi-dikkat-edilmesi-gerekenler",
+    },
+    {
+      title: "Sağlıklı Yaşam İçin 10 Altın Kural",
+      date: "18.01.2025",
+      imageSrc: "/images/image.png",
+      link: "/blog/saglikli-yasam-icin-altin-kural",
+    },
+    {
+      title: "Hamilelikte Sağlıklı Beslenmenin Önemi ve Altın Kurallar",
+      date: "12.01.2025",
+      imageSrc: "/images/image.png",
+      link: "/blog/hamilelikte-saglikli-beslenme",
+    },
+    {
+      title: "Kadın Sağlığında Dikkat Edilmesi Gerekenler",
+      date: "15.01.2025",
+      imageSrc: "/images/image.png",
+      link: "/blog/kadin-sagligi-dikkat-edilmesi-gerekenler",
+    },
+    {
+      title: "Sağlıklı Yaşam İçin 10 Altın Kural",
+      date: "18.01.2025",
+      imageSrc: "/images/image.png",
+      link: "/blog/saglikli-yasam-icin-altin-kural",
+    },
+    {
+      title: "Kadın Sağlığında Dikkat Edilmesi Gerekenler",
+      date: "15.01.2025",
+      imageSrc: "/images/image.png",
+      link: "/blog/kadin-sagligi-dikkat-edilmesi-gerekenler",
     },
   ];
 
@@ -70,22 +105,8 @@ function BlogsSection() {
           </BlurFade>
         ))}
       </div>
-      <BlurFade
-        delay={0.75}
-        inView
-        className="flex items-center justify-center mt-6"
-      >
-        <Button
-          className="bg-purple-600 text-white"
-          startContent={<PenIcon className="w-4 h-4" />}
-          as={Link}
-          href="/yazilar"
-        >
-          Tüm Yazıları Gör
-        </Button>
-      </BlurFade>
     </section>
   );
 }
 
-export default BlogsSection;
+export default Blogs;

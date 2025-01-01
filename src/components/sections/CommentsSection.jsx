@@ -111,7 +111,7 @@ function CommentsSection() {
         description="Beni tercih edenlerin yorumlarını inceleyin ve düşüncelerini öğrenin."
         icon={<ChatDotsIcon className="w-4 h-4" color="#9c40ff" />}
       />
-      <BlurFade delay={0.25} inView>
+      <BlurFade delay={0.5} inView>
         <div className="relative max-w-7xl mx-auto flex w-full flex-col items-center justify-center overflow-hidden">
           <Marquee
             pauseOnHover
@@ -135,7 +135,7 @@ function CommentsSection() {
         </div>
       </BlurFade>
       <BlurFade
-        delay={0.25}
+        delay={0.75}
         inView
         className="flex items-center justify-center mt-6"
       >

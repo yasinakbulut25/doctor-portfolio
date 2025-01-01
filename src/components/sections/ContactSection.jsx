@@ -29,7 +29,7 @@ function ContactSection() {
   };
 
   return (
-    <section className="mb-12" id="iletisim">
+    <section className="mb-12 px-4" id="iletisim">
       <SectionTitle
         title="Bana Ulaşın"
         subTitle="İletişim"
