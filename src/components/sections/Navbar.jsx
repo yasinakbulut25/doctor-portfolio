@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { routes } from "@/routes";
 import Link from "next/link";
 import {
@@ -12,26 +13,18 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { BarsIcon, XMarkIcon, StethoscopeIcon } from "@/icons";
+import { BASE_URL } from "@/app/layout";
 
 function Navbar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const [isHomePage, setIsHomePage] = useState(false);
+  const pathname = usePathname();
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsHomePage(window.location.pathname === "/");
-    }
-  }, []);
-
+  const isHomePage = pathname === "/";
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 100);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -63,6 +56,8 @@ function Navbar() {
       return () => {
         sections.forEach((section) => observer.unobserve(section));
       };
+    } else {
+      setActiveSection("");
     }
   }, [isHomePage]);
 
@@ -78,11 +73,11 @@ function Navbar() {
             as={Link}
             key={index}
             className={`navLink relative text-sm font-medium py-6 px-2 hover:text-purple-600 bg-transparent rounded-sm h-full ${
-              activeSection === route.sectionID
+              activeSection === route.sectionID && isHomePage
                 ? "text-purple-600 active"
                 : "text-black"
             } duration-300`}
-            href={`#${route.sectionID}`}
+            href={`${BASE_URL}#${route.sectionID}`}
             startContent={route.icon}
           >
             {route.name}
@@ -122,11 +117,11 @@ function Navbar() {
                       key={index}
                       onPress={onClose}
                       className={`relative text-sm font-medium p-2 hover:text-purple-600 bg-transparent justify-start ${
-                        activeSection === route.sectionID
+                        activeSection === route.sectionID && isHomePage
                           ? "text-purple-600 active"
                           : "text-black"
                       } duration-300`}
-                      href={`#${route.sectionID}`}
+                      href={`${BASE_URL}#${route.sectionID}`}
                       startContent={route.icon}
                     >
                       {route.name}

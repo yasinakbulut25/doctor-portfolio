@@ -35,7 +35,7 @@ function BlogsSection() {
         description="Sağlıklı yaşam, kadın sağlığı trendleri ve bilinmesi gerekenler bu sayfada sizi bekliyor."
         icon={<PenIcon className="w-4 h-4" color="#9c40ff" />}
       />
-      <div className="grid gap-4 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 md:gap-8 md:grid-cols-2 lg:grid-cols-3 px-4">
         {blogPosts.map((post, index) => (
           <BlurFade
             key={index}
