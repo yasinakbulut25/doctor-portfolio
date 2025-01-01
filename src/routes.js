@@ -27,12 +27,6 @@ export const routes = [
     icon: <UserIcon width={16} color="#9c40ff" />
   },
   {
-    name: 'İletişim',
-    path: 'iletisim',
-    sectionID: 'iletisim',
-    icon: <BellIcon width={16} color="#9c40ff" />
-  },
-  {
     name: 'Yorumlar',
     path: 'yorumlar',
     sectionID: 'yorumlar',
@@ -43,6 +37,12 @@ export const routes = [
     path: 'yazilar',
     sectionID: 'yazilar',
     icon: <PenIcon width={16} color="#9c40ff" />
+  },
+  {
+    name: 'İletişim',
+    path: 'iletisim',
+    sectionID: 'iletisim',
+    icon: <BellIcon width={16} color="#9c40ff" />
   },
   {
     name: 'SSS',

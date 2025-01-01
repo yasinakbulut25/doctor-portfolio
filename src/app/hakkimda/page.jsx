@@ -1,24 +1,22 @@
-import React from "react";
-import SectionTitle from "./SectionTitle";
-import { ChevronRight, UserIcon } from "@/icons";
+import SectionTitle from "@/components/sections/SectionTitle";
+import { UserIcon } from "lucide-react";
+import BlurFade from "@/components/ui/blur-fade";
 import Image from "next/image";
 import { BorderBeam } from "@/components/ui/border-beam";
-import BlurFade from "@/components/ui/blur-fade";
-import Link from "next/link";
-import { Button } from "@nextui-org/react";
+import CommentsSection from "@/components/sections/CommentsSection";
 
-function AboutSection() {
+function AboutPage() {
   return (
-    <section className="mt-12" id="hakkimda">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionTitle
         title="Beni Tanıyın"
         subTitle="Hakkımda"
         description="Hayat hikayem, değerlerim ve profesyonel deneyimlerim hakkında bilgi edinin."
         icon={<UserIcon className="w-4 h-4" color="#9c40ff" />}
       />
-      <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+      <div className="flex flex-col items-center gap-8">
         <BlurFade delay={0.5} inView>
-          <p className="text-md text-black font-medium mx-auto">
+          <p className="text-md text-black font-medium mx-auto max-w-4xl text-center text-pretty">
             <span className="block mb-4 text-purple-600 font-bold">
               Merhaba,
             </span>
@@ -34,20 +32,25 @@ function AboutSection() {
             doğum ve danışmanlık hizmeti vererek birçok hayatın bir parçası
             olmanın mutluluğunu yaşadım. Hamilelik süreci, doğum ve kadın
             sağlığına dair her adımda size rehberlik etmek için buradayım.
+            Teknolojiyi yakından takip ederek modern tıbbın sunduğu en yeni
+            tedavi yöntemlerini kliniğimizde uygulamaktayız. Hastalarımızın
+            kendilerini rahat ve güvende hissetmeleri için hem fiziksel hem de
+            psikolojik destek sunuyoruz.
+            <br />
+            <br />
+            Kendi hayat felsefem; insan sağlığına saygı ve güven ilkelerini
+            mesleğimin her aşamasında uygulamaktır. Sizlerin ihtiyaçlarına uygun
+            çözümler sunmak ve daha sağlıklı bir yaşam sürmenize katkıda
+            bulunmak için buradayım.
+            <br />
+            <br />
+            Siz de bana ulaşarak daha sağlıklı bir geleceğe adım atabilirsiniz.
           </p>
-          <Button
-            className="bg-purple-600 text-white mt-8"
-            endContent={<ChevronRight className="w-4 h-4" />}
-            as={Link}
-            href="/hakkimda"
-          >
-            Beni Tanıyın
-          </Button>
         </BlurFade>
         <BlurFade delay={0.75} inView>
           <div className="relative mx-auto rounded-lg overflow-hidden">
             <Image
-              className="object-contain w-full h-auto max-h-[350px]"
+              className="object-contain w-full h-auto max-h-[500px]"
               src="/images/3.png"
               alt="Doç. Dr. Arzu Yurci"
               width={500}
@@ -63,8 +66,9 @@ function AboutSection() {
           </div>
         </BlurFade>
       </div>
-    </section>
+      <CommentsSection />
+    </div>
   );
 }
 
-export default AboutSection;
+export default AboutPage;

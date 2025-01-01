@@ -6,14 +6,7 @@ import { DotPattern } from "@/components/ui/dot-pattern";
 function HeroSection() {
   return (
     <section className="relative" id="ana-sayfa">
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40"
-      >
-        <div className="blur-[106px] h-56 bg-gradient-to-br from-purple-600 to-purple-400" />
-        <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300" />
-      </div>
-      <div className="relative min-h-dvh pt-20 md:pt-24 xl:pt-32 pb-6 px-4 ml-auto">
+      <div className="relative pb-6 px-4 ml-auto">
         <div className="lg:w-2/3 text-center mx-auto flex flex-col md:gap-10 gap-6 items-center">
           <BlurFade delay={0.25} inView>
             <h1 className="text-gray-900 text-pretty font-bold text-2xl sm:text-4xl md:text-5xl xl:text-6xl">
