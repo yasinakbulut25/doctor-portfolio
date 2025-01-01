@@ -1,0 +1,1 @@
+export { AiStarsIcon } from './AiStarsIcon';
