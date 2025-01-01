@@ -3,7 +3,8 @@ import {
   QuestionCircleIcon,
   StethoscopeIcon,
   BellIcon,
-  UserIcon
+  UserIcon,
+  PenIcon
 } from "@/icons";
 
 export const routes = [
@@ -36,6 +37,12 @@ export const routes = [
     path: 'yorumlar',
     sectionID: 'yorumlar',
     icon: <ChatDotsIcon width={16} color="#9c40ff" />
+  },
+  {
+    name: 'Yazılar',
+    path: 'yazilar',
+    sectionID: 'yazilar',
+    icon: <PenIcon width={16} color="#9c40ff" />
   },
   {
     name: 'SSS',
