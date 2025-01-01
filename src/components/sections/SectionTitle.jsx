@@ -1,6 +1,7 @@
 import BlurFade from "@/components/ui/blur-fade";
 import AnimatedGradientText from "@/components/ui/animated-gradient-text";
-import { AiStarsIcon } from "../../../public/icons";
+import { AiStarsIcon } from "@/icons";
+import { StethoscopeIcon } from "@/icons/StethoscopeIcon";
 
 function SectionTitle({ title, description, subTitle }) {
   return (
@@ -8,7 +9,7 @@ function SectionTitle({ title, description, subTitle }) {
       <div className="flex flex-col items-center gap-2 mb-12">
         {subTitle && (
           <AnimatedGradientText className='flex items-center gap-2'>
-            <AiStarsIcon className='w-4 h-4' fill='#9c40ff' />
+            <StethoscopeIcon className='w-4 h-4' color='#9c40ff' />
             <span className='text-purple-600'>{subTitle}</span>
           </AnimatedGradientText>
         )}

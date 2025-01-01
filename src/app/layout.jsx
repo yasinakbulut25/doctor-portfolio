@@ -1,5 +1,5 @@
 import { Montserrat } from "next/font/google";
-import '../styles/index.css';
+import "../styles/index.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -14,9 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr" className="html-content !p-0 no-scrollbar">
-      <body
-        className={`${montserrat.className} antialiased bg-zinc-50`}
-      >
+      <body className={`${montserrat.className} antialiased bg-zinc-50`}>
         {children}
       </body>
     </html>
