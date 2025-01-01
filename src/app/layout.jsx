@@ -17,10 +17,10 @@ export default function RootLayout({ children }) {
         className={`${montserrat.className} relative antialiased bg-white overflow-x-hidden`}
       >
         <Navbar />
-        <div className="pt-[100px] min-h-[650px]">
+        <div className="pt-[100px] min-h-[650px] overflow-x-hidden">
           <div
             aria-hidden="true"
-            className="absolute inset-0 grid grid-cols-2 opacity-40"
+            className="absolute inset-0 grid grid-cols-2 opacity-40 max-w-full"
           >
             <div className="blur-[106px] h-56 bg-gradient-to-br from-purple-600 to-purple-400" />
             <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300" />
