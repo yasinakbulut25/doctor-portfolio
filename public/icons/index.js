@@ -4,3 +4,5 @@ export { XMarkIcon } from './XMarkIcon';
 export { StethoscopeIcon } from './StethoscopeIcon';
 export { ChatDotsIcon } from './ChatDotsIcon';
 export { QuestionCircleIcon } from './QuestionCircleIcon';
+export { BellIcon } from './BellIcon';
+export { UserIcon } from './UserIcon';

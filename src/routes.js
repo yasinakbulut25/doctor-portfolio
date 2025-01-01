@@ -1,4 +1,10 @@
-import { ChatDotsIcon, QuestionCircleIcon, StethoscopeIcon } from "@/icons";
+import {
+  ChatDotsIcon,
+  QuestionCircleIcon,
+  StethoscopeIcon,
+  BellIcon,
+  UserIcon
+} from "@/icons";
 
 export const routes = [
   {
@@ -17,13 +23,13 @@ export const routes = [
     name: 'Hakkımda',
     path: 'hakkimda',
     sectionID: 'hakkimda',
-    icon: <StethoscopeIcon width={16} color="#9c40ff" />
+    icon: <UserIcon width={16} color="#9c40ff" />
   },
   {
     name: 'İletişim',
     path: 'iletisim',
     sectionID: 'iletisim',
-    icon: <StethoscopeIcon width={16} color="#9c40ff" />
+    icon: <BellIcon width={16} color="#9c40ff" />
   },
   {
     name: 'Yorumlar',
