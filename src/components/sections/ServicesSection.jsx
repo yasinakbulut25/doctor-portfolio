@@ -40,11 +40,9 @@ function ServicesSection() {
   return (
     <section className="md:container mx-auto px-4 mt-12" id="hizmetler">
       <SectionTitle
-        title={"Sizin İçin Yanınızdayız!"}
-        subTitle={"Hizmetlerimiz"}
-        description={
-          "Kadın sağlığı ve doğum alanında, ihtiyaçlarınıza özel çözümler sunuyoruz."
-        }
+        title="Sizin İçin Yanınızdayız!"
+        subTitle="Hizmetlerimiz"
+        description="Kadın sağlığı ve doğum alanında, ihtiyaçlarınıza özel çözümler sunuyoruz."
       />
       <div className="columns-1 sm:columns-2 lg:columns-3">
         {services.map((service, index) => (

@@ -1,4 +1,4 @@
-import { StethoscopeIcon } from "@/icons";
+import { ChatDotsIcon, StethoscopeIcon } from "@/icons";
 
 export const routes = [
   {
@@ -29,7 +29,7 @@ export const routes = [
     name: 'Yorumlar',
     path: 'yorumlar',
     sectionID: 'yorumlar',
-    icon: <StethoscopeIcon width={16} color="#9c40ff" />
+    icon: <ChatDotsIcon width={16} color="#9c40ff" />
   },
   {
     name: 'SSS',

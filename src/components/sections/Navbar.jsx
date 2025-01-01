@@ -74,7 +74,7 @@ function Navbar() {
                 ? "text-purple-600 active"
                 : "text-black"
             } duration-300`}
-            href={route.path}
+            href={`#${route.sectionID}`}
             startContent={route.icon}
           >
             {route.name}
@@ -118,7 +118,7 @@ function Navbar() {
                           ? "text-purple-600 active"
                           : "text-black"
                       } duration-300`}
-                      href={route.path}
+                      href={`#${route.sectionID}`}
                       startContent={route.icon}
                     >
                       {route.name}
