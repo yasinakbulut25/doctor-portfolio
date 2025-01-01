@@ -5,7 +5,7 @@ import { StethoscopeIcon } from "@/icons/StethoscopeIcon";
 function SectionTitle({ title, description, subTitle, icon }) {
   return (
     <BlurFade delay={0.25} inView>
-      <div className="flex flex-col items-center gap-2 mb-12">
+      <div className="flex flex-col items-center gap-2 mb-8">
         {subTitle && (
           <AnimatedGradientText className="flex items-center gap-2">
             {icon ? (
