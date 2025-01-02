@@ -4,7 +4,8 @@ import {
   StethoscopeIcon,
   BellIcon,
   UserIcon,
-  PenIcon
+  PenIcon,
+  HomeIcon
 } from "@/icons";
 
 export const routes = [
@@ -12,7 +13,7 @@ export const routes = [
     name: 'Ana Sayfa',
     path: '/',
     sectionID: 'ana-sayfa',
-    icon: <StethoscopeIcon width={16} color="#9c40ff" />
+    icon: <HomeIcon width={16} color="#9c40ff" />
   },
   {
     name: 'Hizmetler',
