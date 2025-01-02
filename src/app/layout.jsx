@@ -21,11 +21,12 @@ export default function RootLayout({ children }) {
           <div
             aria-hidden="true"
             className="absolute inset-0 grid grid-cols-2 opacity-40 max-w-full"
+            style={{ zIndex: 0 }}
           >
             <div className="blur-[106px] h-56 bg-gradient-to-br from-purple-600 to-purple-400" />
             <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300" />
           </div>
-          {children}
+          <div className="relative" style={{ zIndex: 9 }}>{children}</div>
         </div>
         <Footer />
       </body>

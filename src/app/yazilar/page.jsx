@@ -4,8 +4,8 @@ import Image from "next/image";
 import BlurFade from "@/components/ui/blur-fade";
 import SectionTitle from "@/components/sections/SectionTitle";
 
-function Blogs() {
-  const blogPosts = [
+function Blogs({ isDetailPage }) {
+  let blogPosts = [
     {
       title: "Hamilelikte Sağlıklı Beslenmenin Önemi ve Altın Kurallar",
       date: "12.01.2025",
@@ -62,10 +62,14 @@ function Blogs() {
     },
   ];
 
+  if (isDetailPage) {
+    blogPosts = blogPosts.slice(0, 3);
+  }
+
   return (
     <section className="mx-auto max-w-7xl mb-12" id="yazilar">
       <SectionTitle
-        title="Sağlık İçin Bilgi"
+        title={isDetailPage ? "Diğer Yazılar" : "Sağlık İçin Bilgi"}
         subTitle="Yazılarım"
         description="Sağlıklı yaşam, kadın sağlığı trendleri ve bilinmesi gerekenler bu sayfada sizi bekliyor."
         icon={<PenIcon className="w-4 h-4" color="#9c40ff" />}
@@ -84,7 +88,7 @@ function Blogs() {
                   className="max-h-[350px] h-auto w-full object-cover object-center transition duration-500 group-hover:scale-105"
                 />
               </div>
-              <Link href={post.link}>
+              <Link href="/blog">
                 <h3 className="text-lg font-bold text-black group-hover:text-purple-600 duration-300">
                   {post.title}
                 </h3>
@@ -95,7 +99,7 @@ function Blogs() {
                   className="bg-purple-600 text-white"
                   as={Link}
                   size="sm"
-                  href={post.link}
+                  href="/blog"
                   endContent={<ChevronRight className="w-4 h-4" />}
                 >
                   Yazıyı Oku
