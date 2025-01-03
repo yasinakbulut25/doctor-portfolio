@@ -62,33 +62,6 @@ function BlogDetail() {
               tedavisi düşünülebilir.
             </li>
           </ol>
-          <h2>Menopozda Doğru Beslenme İçin Örnek Tablo</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Gıda Grubu</th>
-                <th>Örnek Besinler</th>
-                <th>Faydaları</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Süt Ürünleri</td>
-                <td>Süt, yoğurt, peynir</td>
-                <td>Kemik sağlığını destekler</td>
-              </tr>
-              <tr>
-                <td>Yeşil Sebzeler</td>
-                <td>Ispanak, brokoli, lahana</td>
-                <td>Vitamin ve mineral sağlar</td>
-              </tr>
-              <tr>
-                <td>Omega-3 Kaynakları</td>
-                <td>Somon, ceviz, chia tohumu</td>
-                <td>Kalp sağlığını korur</td>
-              </tr>
-            </tbody>
-          </table>
           <h2>Uzman Desteği Almanın Önemi</h2>
           <p>
             Menopoz sürecinde, bir uzmandan destek almak büyük önem taşır.
