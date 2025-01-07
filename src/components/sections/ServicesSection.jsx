@@ -1,51 +1,22 @@
+"use client"
+
 import Image from "next/image";
 import { BorderBeam } from "@/components/ui/border-beam";
 import BlurFade from "@/components/ui/blur-fade";
+import { useSelector } from "react-redux";
+import SELECTORS from "@/store/selectors";
 import SectionTitle from "./SectionTitle";
 
 function ServicesSection() {
-  const services = [
-    {
-      title: "Tüp Bebek Tedavisi (IVF)",
-      description:
-        "Doğal yollarla çocuk sahibi olamayan çiftler için etkili bir tedavi yöntemidir. Laboratuvar ortamında döllenen embriyo rahme yerleştirilir, süreç kişiye özel planlanır.",
-    },
-    {
-      title: "Kadın Sağlığı Kontrolleri",
-      description:
-        "Kadın sağlığını korumak ve hastalıkları erken teşhis etmek için düzenli kontroller yapılır. Rahim, yumurtalık ve diğer üreme organları detaylı incelenir.",
-    },
-    {
-      title: "Gebelik Takibi ve Doğum",
-      description:
-        "Gebelik sürecinde düzenli kontrollerle bebeğin gelişimi takip edilir. Sağlıklı bir hamilelik ve güvenli bir doğum süreci için destek sunulur.",
-    },
-    {
-      title: "İnfertilite (Kısırlık) Tanı ve Tedavisi",
-      description:
-        "Çocuk sahibi olamama nedenleri tespit edilerek kişiye özel tedaviler uygulanır. Hormon tedavisi ve cerrahi çözümler sunulabilir.",
-    },
-    {
-      title: "Menopoz Danışmanlığı ve Tedavisi",
-      description:
-        "Menopoz dönemi şikayetlerini azaltmak için hormon tedavisi ve yaşam tarzı önerileriyle destek sağlanır.",
-    },
-    {
-      title: "Estetik Jinekoloji ve Lazer Tedavileri",
-      description:
-        "Genital bölge estetiği ve lazer tedavileriyle özgüveninizi artıracak hızlı ve etkili çözümler sunulur.",
-    },
-  ];
+  const data = useSelector(SELECTORS.getServices);
+
+  if (!data) return <Loading />;
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 mb-12" id="hizmetler">
-      <SectionTitle
-        title="Sizin İçin Yanınızdayız!"
-        subTitle="Hizmetlerimiz"
-        description="Kadın sağlığı ve doğum alanında, ihtiyaçlarınıza özel çözümler sunuyoruz."
-      />
+      <SectionTitle sectionKey='sectionServices' />
       <div className="columns-1 sm:columns-2 lg:columns-3">
-        {services.map((service, index) => (
+        {data.map((service, index) => (
           <BlurFade
             key={index}
             className="mb-8"
@@ -62,7 +33,7 @@ function ServicesSection() {
                 </div>
                 <Image
                   className="object-contain rounded-lg mb-3"
-                  src="/uploads/gem.svg"
+                  src={service.image}
                   width={50}
                   height={50}
                   alt={service.title}

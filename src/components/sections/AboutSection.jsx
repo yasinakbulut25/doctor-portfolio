@@ -1,4 +1,9 @@
+"use client";
+
 import React from "react";
+import { useSelector } from "react-redux";
+import SELECTORS from "@/store/selectors";
+import DOMPurify from "dompurify";
 import SectionTitle from "./SectionTitle";
 import { ChevronRight, UserIcon } from "@/icons";
 import Image from "next/image";
@@ -8,6 +13,12 @@ import Link from "next/link";
 import { Button } from "@nextui-org/react";
 
 function AboutSection() {
+  const data = useSelector(SELECTORS.getAboutInfo);
+  if (!data) return;
+
+  const { content, image } = data;
+  const cleanContent = DOMPurify.sanitize(content);
+
   return (
     <section className="mb-12" id="hakkimda">
       <SectionTitle
@@ -18,23 +29,10 @@ function AboutSection() {
       />
       <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 items-center gap-8 px-4">
         <BlurFade delay={0.5} inView>
-          <p className="text-md text-black font-medium mx-auto">
-            <span className="block mb-4 text-purple-600 font-bold">
-              Merhaba,
-            </span>
-            Ben Doç. Dr. Arzu Yurci, Kadın Sağlığı ve Doğum Uzmanı olarak
-            yıllardır siz değerli hastalarımıza hizmet vermekteyim. Tıp
-            eğitimimi Tıp Fakültesi’nde tamamladıktan sonra uzmanlık alanımı
-            Kadın Hastalıkları ve Doğum üzerine yoğunlaştırdım. Eğitim ve
-            tecrübelerim boyunca önceliğim her zaman hastalarımın sağlığı ve
-            mutluluğu oldu.
-            <br />
-            <br />
-            Mesleğimdeki 10 yılı aşkın sürede, binlerce başarılı operasyon,
-            doğum ve danışmanlık hizmeti vererek birçok hayatın bir parçası
-            olmanın mutluluğunu yaşadım. Hamilelik süreci, doğum ve kadın
-            sağlığına dair her adımda size rehberlik etmek için buradayım.
-          </p>
+          <p
+            className="text-md text-black font-medium mx-auto"
+            dangerouslySetInnerHTML={{ __html: cleanContent }}
+          />
           <Button
             className="bg-purple-600 text-white mt-8"
             endContent={<ChevronRight className="w-4 h-4" />}
@@ -48,7 +46,7 @@ function AboutSection() {
           <div className="relative mx-auto rounded-lg overflow-hidden">
             <Image
               className="object-contain w-full h-auto max-h-[350px]"
-              src="/images/3.png"
+              src={image}
               alt="Doç. Dr. Arzu Yurci"
               width={500}
               height={500}

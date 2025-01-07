@@ -1,7 +1,7 @@
 import { Montserrat } from "next/font/google";
 import "../styles/index.css";
-import Navbar from "@/components/sections/Navbar";
-import Footer from "@/components/sections/Footer";
+import ClientProvider from "./ClientProvider";
+import Main from "./main";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -16,19 +16,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${montserrat.className} relative antialiased bg-white overflow-x-hidden`}
       >
-        <Navbar />
-        <div className="pt-[100px] min-h-[650px] overflow-x-hidden">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 grid grid-cols-2 opacity-40 max-w-full"
-            style={{ zIndex: 0 }}
-          >
-            <div className="blur-[106px] h-56 bg-gradient-to-br from-purple-600 to-purple-400" />
-            <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300" />
-          </div>
-          <div className="relative" style={{ zIndex: 9 }}>{children}</div>
-        </div>
-        <Footer />
+        <ClientProvider>
+          <Main>{children}</Main>
+        </ClientProvider>
       </body>
     </html>
   );
