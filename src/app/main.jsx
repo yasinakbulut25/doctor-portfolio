@@ -47,6 +47,4 @@ function Main({ children }) {
   );
 }
 
-export const getServerSideProps = 
-
 export default Main;
