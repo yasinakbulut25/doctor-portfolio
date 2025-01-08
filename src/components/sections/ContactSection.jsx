@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { BellIcon, ChevronRight } from "@/icons";
 import SectionTitle from "./SectionTitle";

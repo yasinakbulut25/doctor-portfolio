@@ -5,8 +5,17 @@ import { reviews } from "@/components/sections/CommentsSection";
 import SectionTitle from "@/components/sections/SectionTitle";
 import BlurFade from "@/components/ui/blur-fade";
 import FaqsSection from "@/components/sections/FaqsSection";
+import { getComments } from "@/api/endpoints";
 
-function CommentsPage() {
+async function CommentsPage() {
+  const getData = getComments();
+  const data = await Promise.resolve(getData);
+  const activeData = data.filter(
+    (item) => Number(item.publish) === 1 && !item.deleted_at
+  );
+
+  if (!data || !activeData || activeData.length === 0) return;
+
   return (
     <div className="max-w-7xl w-full mx-auto">
       <SectionTitle
@@ -16,7 +25,7 @@ function CommentsPage() {
         icon={<ChatDotsIcon className="w-4 h-4" color="#9c40ff" />}
       />
       <div className="lg:columns-4 md:columns-3 sm:columns-2 columns-1 gap-4 px-4 mb-12">
-        {reviews.map((review, index) => (
+        {activeData.map((review, index) => (
           <BlurFade
             key={index}
             className="mb-4"

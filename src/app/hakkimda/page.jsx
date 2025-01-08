@@ -4,8 +4,15 @@ import BlurFade from "@/components/ui/blur-fade";
 import Image from "next/image";
 import { BorderBeam } from "@/components/ui/border-beam";
 import CommentsSection from "@/components/sections/CommentsSection";
+import { getUser } from "@/api/endpoints";
 
-function AboutPage() {
+async function AboutPage() {
+  const getData = getUser();
+  const data = await Promise.resolve(getData);
+  if (!data) return;
+
+  const { content, image } = data.about;
+
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionTitle
@@ -17,41 +24,14 @@ function AboutPage() {
       <div className="flex flex-col items-center gap-8 mb-12">
         <BlurFade delay={0.5} inView>
           <p className="text-md text-black font-medium mx-auto max-w-4xl text-center text-pretty">
-            <span className="block mb-4 text-purple-600 font-bold">
-              Merhaba,
-            </span>
-            Ben Doç. Dr. Arzu Yurci, Kadın Sağlığı ve Doğum Uzmanı olarak
-            yıllardır siz değerli hastalarımıza hizmet vermekteyim. Tıp
-            eğitimimi Tıp Fakültesi’nde tamamladıktan sonra uzmanlık alanımı
-            Kadın Hastalıkları ve Doğum üzerine yoğunlaştırdım. Eğitim ve
-            tecrübelerim boyunca önceliğim her zaman hastalarımın sağlığı ve
-            mutluluğu oldu.
-            <br />
-            <br />
-            Mesleğimdeki 10 yılı aşkın sürede, binlerce başarılı operasyon,
-            doğum ve danışmanlık hizmeti vererek birçok hayatın bir parçası
-            olmanın mutluluğunu yaşadım. Hamilelik süreci, doğum ve kadın
-            sağlığına dair her adımda size rehberlik etmek için buradayım.
-            Teknolojiyi yakından takip ederek modern tıbbın sunduğu en yeni
-            tedavi yöntemlerini kliniğimizde uygulamaktayız. Hastalarımızın
-            kendilerini rahat ve güvende hissetmeleri için hem fiziksel hem de
-            psikolojik destek sunuyoruz.
-            <br />
-            <br />
-            Kendi hayat felsefem; insan sağlığına saygı ve güven ilkelerini
-            mesleğimin her aşamasında uygulamaktır. Sizlerin ihtiyaçlarına uygun
-            çözümler sunmak ve daha sağlıklı bir yaşam sürmenize katkıda
-            bulunmak için buradayım.
-            <br />
-            <br />
-            Siz de bana ulaşarak daha sağlıklı bir geleceğe adım atabilirsiniz.
+            {content}
           </p>
         </BlurFade>
         <BlurFade delay={0.75} inView>
           <div className="relative mx-auto rounded-lg overflow-hidden">
             <Image
               className="object-contain w-full h-auto max-h-[500px]"
-              src="/images/3.png"
+              src={image}
               alt="Doç. Dr. Arzu Yurci"
               width={500}
               height={500}

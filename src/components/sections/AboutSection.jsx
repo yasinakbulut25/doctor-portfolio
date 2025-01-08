@@ -1,9 +1,4 @@
-"use client";
-
 import React from "react";
-import { useSelector } from "react-redux";
-import SELECTORS from "@/store/selectors";
-import DOMPurify from "dompurify";
 import SectionTitle from "./SectionTitle";
 import { ChevronRight, UserIcon } from "@/icons";
 import Image from "next/image";
@@ -11,13 +6,14 @@ import { BorderBeam } from "@/components/ui/border-beam";
 import BlurFade from "@/components/ui/blur-fade";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
+import { getUser } from "@/api/endpoints";
 
-function AboutSection() {
-  const data = useSelector(SELECTORS.getAboutInfo);
+async function AboutSection() {
+  const getData = getUser();
+  const data = await Promise.resolve(getData);
   if (!data) return;
 
-  const { content, image } = data;
-  const cleanContent = DOMPurify.sanitize(content);
+  const { content, image } = data.about;
 
   return (
     <section className="mb-12" id="hakkimda">
@@ -31,7 +27,7 @@ function AboutSection() {
         <BlurFade delay={0.5} inView>
           <p
             className="text-md text-black font-medium mx-auto"
-            dangerouslySetInnerHTML={{ __html: cleanContent }}
+            dangerouslySetInnerHTML={{ __html: content }}
           />
           <Button
             className="bg-purple-600 text-white mt-8"

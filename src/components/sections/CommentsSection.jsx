@@ -5,103 +5,19 @@ import { Button } from "@nextui-org/react";
 import { ChatDotsIcon } from "@/icons";
 import Link from "next/link";
 import CommentCard from "./CommentCard";
+import { getComments } from "@/api/endpoints";
 
-export const reviews = [
-  {
-    name: "Ahmet",
-    date: "02.01.2025",
-    body: "Hayatım boyunca böyle bir şey görmedim. Gerçekten harika. Çok beğendim.",
-  },
-  {
-    name: "Merve",
-    date: "15.12.2024",
-    body: "Ne diyeceğimi bilemiyorum. Hayran kaldım. Mükemmel bir deneyimdi.",
-  },
-  {
-    name: "Ali",
-    date: "10.03.2025",
-    body: "Bu hizmet beni gerçekten etkiledi. Çok teşekkür ederim.",
-  },
-  {
-    name: "Zeynep",
-    date: "25.01.2025",
-    body: "Tek kelimeyle muhteşem. Çok memnun kaldım. Herkese tavsiye ederim.",
-  },
-  {
-    name: "Mehmet",
-    date: "05.11.2024",
-    body: "Gerçekten profesyonel bir ekip. Her şey mükemmeldi. Teşekkürler.",
-  },
-  {
-    name: "Ayşe",
-    date: "17.07.2024",
-    body: "İşlerini severek yapan bir ekip. Sonuçlar beni çok mutlu etti.",
-  },
-  {
-    name: "Burak",
-    date: "20.08.2024",
-    body: "Beklentilerimin çok ötesindeydi. Harika bir deneyim yaşadım.",
-  },
-  {
-    name: "Elif",
-    date: "30.09.2024",
-    body: "Tüm süreç çok kolay ve hızlıydı. Çok memnun kaldım.",
-  },
-  {
-    name: "Eren",
-    date: "12.02.2025",
-    body: "Her şey planlandığı gibi ilerledi. Profesyonellik üst düzeydeydi.",
-  },
-  {
-    name: "Selin",
-    date: "08.04.2025",
-    body: "Gerçekten güven veren bir hizmet. Herkese tavsiye ederim.",
-  },
-  {
-    name: "Hakan",
-    date: "22.06.2024",
-    body: "Çok ilgili ve çözüm odaklı bir ekip. Teşekkür ederim.",
-  },
-  {
-    name: "Esra",
-    date: "03.10.2024",
-    body: "Aldığım hizmetten çok memnun kaldım. Harika bir deneyimdi.",
-  },
-  {
-    name: "Kerem",
-    date: "27.11.2024",
-    body: "Bu kadar iyi bir hizmet beklemiyordum. Çok etkilendim.",
-  },
-  {
-    name: "Seda",
-    date: "19.01.2025",
-    body: "Hızlı ve etkili bir hizmetti. Her şey mükemmeldi.",
-  },
-  {
-    name: "Emre",
-    date: "14.05.2025",
-    body: "Ekip çok profesyoneldi ve her adımda destek oldular.",
-  },
-  {
-    name: "Deniz",
-    date: "01.12.2024",
-    body: "Çok samimi bir ekip ve harika bir hizmet. Teşekkür ederim.",
-  },
-  {
-    name: "Duygu",
-    date: "09.03.2025",
-    body: "İşlerini gerçekten severek yapıyorlar. Harika bir deneyim yaşadım.",
-  },
-  {
-    name: "Can",
-    date: "21.02.2025",
-    body: "Her şey planlandığı gibi ilerledi. Bu hizmeti herkese öneriyorum.",
-  },
-];
+async function CommentsSection() {
+  const getData = getComments();
+  const data = await Promise.resolve(getData);
+  const activeData = data.filter(
+    (item) => Number(item.publish) === 1 && !item.deleted_at
+  );
 
-function CommentsSection() {
-  const firstRow = reviews.slice(0, reviews.length / 2);
-  const secondRow = reviews.slice(reviews.length / 2);
+  if (!data || !activeData || activeData.length === 0) return;
+
+  const firstRow = activeData.slice(0, activeData.length / 2);
+  const secondRow = activeData.slice(activeData.length / 2);
 
   return (
     <section className="mb-12" id="yorumlar">

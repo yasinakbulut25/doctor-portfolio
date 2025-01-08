@@ -3,67 +3,19 @@ import { Button, Link } from "@nextui-org/react";
 import Image from "next/image";
 import BlurFade from "@/components/ui/blur-fade";
 import SectionTitle from "@/components/sections/SectionTitle";
+import { getBlogs } from "@/api/endpoints";
 
-function Blogs({ isDetailPage }) {
-  let blogPosts = [
-    {
-      title: "Hamilelikte Sağlıklı Beslenmenin Önemi ve Altın Kurallar",
-      date: "12.01.2025",
-      imageSrc: "/images/image.png",
-      link: "/blog/hamilelikte-saglikli-beslenme",
-    },
-    {
-      title: "Kadın Sağlığında Dikkat Edilmesi Gerekenler",
-      date: "15.01.2025",
-      imageSrc: "/images/image.png",
-      link: "/blog/kadin-sagligi-dikkat-edilmesi-gerekenler",
-    },
-    {
-      title: "Sağlıklı Yaşam İçin 10 Altın Kural",
-      date: "18.01.2025",
-      imageSrc: "/images/image.png",
-      link: "/blog/saglikli-yasam-icin-altin-kural",
-    },
-    {
-      title: "Kadın Sağlığında Dikkat Edilmesi Gerekenler",
-      date: "15.01.2025",
-      imageSrc: "/images/image.png",
-      link: "/blog/kadin-sagligi-dikkat-edilmesi-gerekenler",
-    },
-    {
-      title: "Sağlıklı Yaşam İçin 10 Altın Kural",
-      date: "18.01.2025",
-      imageSrc: "/images/image.png",
-      link: "/blog/saglikli-yasam-icin-altin-kural",
-    },
-    {
-      title: "Hamilelikte Sağlıklı Beslenmenin Önemi ve Altın Kurallar",
-      date: "12.01.2025",
-      imageSrc: "/images/image.png",
-      link: "/blog/hamilelikte-saglikli-beslenme",
-    },
-    {
-      title: "Kadın Sağlığında Dikkat Edilmesi Gerekenler",
-      date: "15.01.2025",
-      imageSrc: "/images/image.png",
-      link: "/blog/kadin-sagligi-dikkat-edilmesi-gerekenler",
-    },
-    {
-      title: "Sağlıklı Yaşam İçin 10 Altın Kural",
-      date: "18.01.2025",
-      imageSrc: "/images/image.png",
-      link: "/blog/saglikli-yasam-icin-altin-kural",
-    },
-    {
-      title: "Kadın Sağlığında Dikkat Edilmesi Gerekenler",
-      date: "15.01.2025",
-      imageSrc: "/images/image.png",
-      link: "/blog/kadin-sagligi-dikkat-edilmesi-gerekenler",
-    },
-  ];
+async function Blogs({ isDetailPage }) {
+  const getData = getBlogs();
+  const data = await Promise.resolve(getData);
+  let activeData = data.filter(
+    (item) => Number(item.publish) === 1 && !item.deleted_at
+  );
+
+  if (!data || !activeData || activeData.length === 0) return;
 
   if (isDetailPage) {
-    blogPosts = blogPosts.slice(0, 3);
+    activeData = activeData.slice(0, 3);
   }
 
   return (
@@ -80,7 +32,7 @@ function Blogs({ isDetailPage }) {
             <div className="group flex flex-col gap-3 p-5 rounded-3xl bg-white border border-gray-100 shadow-2xl shadow-gray-600/10">
               <div className="relative overflow-hidden rounded-xl">
                 <Image
-                  src={post.imageSrc}
+                  src={post.image}
                   alt="art cover"
                   loading="lazy"
                   width={350}

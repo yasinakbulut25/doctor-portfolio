@@ -1,22 +1,23 @@
-"use client"
-
 import Image from "next/image";
 import { BorderBeam } from "@/components/ui/border-beam";
 import BlurFade from "@/components/ui/blur-fade";
-import { useSelector } from "react-redux";
-import SELECTORS from "@/store/selectors";
 import SectionTitle from "./SectionTitle";
+import { getServices } from "@/api/endpoints";
 
-function ServicesSection() {
-  const data = useSelector(SELECTORS.getServices);
+async function ServicesSection() {
+  const getData = getServices();
+  const data = await Promise.resolve(getData);
+  const activeData = data.filter(
+    (item) => Number(item.publish) === 1 && !item.deleted_at
+  );
 
-  if (!data) return <Loading />;
+  if (!data || !activeData || activeData.length === 0) return;
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 mb-12" id="hizmetler">
-      <SectionTitle sectionKey='sectionServices' />
+      <SectionTitle sectionKey="sectionServices" />
       <div className="columns-1 sm:columns-2 lg:columns-3">
-        {data.map((service, index) => (
+        {activeData.map((service, index) => (
           <BlurFade
             key={index}
             className="mb-8"

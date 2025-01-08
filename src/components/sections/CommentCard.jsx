@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 function CommentCard({ review, isCommentsPage }) {
-  const { name, date, body } = review;
+  const { name, date, description } = review;
 
   return (
     <figure
@@ -17,7 +17,7 @@ function CommentCard({ review, isCommentsPage }) {
           <p className="text-xs text-slate-600">{date}</p>
         </div>
       </div>
-      <blockquote className="mt-2 text-sm text-black">{body}</blockquote>
+      <blockquote className="mt-2 text-sm text-black">{description}</blockquote>
     </figure>
   );
 }

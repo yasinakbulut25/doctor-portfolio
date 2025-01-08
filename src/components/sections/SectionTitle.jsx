@@ -1,14 +1,13 @@
 import BlurFade from "@/components/ui/blur-fade";
 import AnimatedGradientText from "@/components/ui/animated-gradient-text";
 import { StethoscopeIcon } from "@/icons/StethoscopeIcon";
-import { useSelector } from "react-redux";
-import SELECTORS from "@/store/selectors";
+import { getSections } from "@/api/endpoints";
 
-function SectionTitle({ icon, sectionKey }) {
-  const sections = useSelector(SELECTORS.getSections);
-  const section = sections.find((section) => section.sectionKey === sectionKey);
-
-  if (!sections || !section) return;
+async function SectionTitle({ icon, sectionKey }) {
+  const getData = getSections();
+  const data = await Promise.resolve(getData);
+  const section = data.find((section) => section.sectionKey === sectionKey);
+  if (!data || !section) return;
 
   return (
     <BlurFade delay={0.25} inView>
