@@ -2,7 +2,6 @@ import { StethoscopeIcon } from "@/icons";
 import { routes } from "@/routes";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
-import React from "react";
 
 function Footer() {
   return (

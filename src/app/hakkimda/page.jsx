@@ -7,8 +7,7 @@ import CommentsSection from "@/components/sections/CommentsSection";
 import { getUser } from "@/api/endpoints";
 
 async function AboutPage() {
-  const getData = getUser();
-  const data = await Promise.resolve(getData);
+  const data = await getUser();
   if (!data) return;
 
   const { content, image } = data.about;
@@ -23,9 +22,10 @@ async function AboutPage() {
       />
       <div className="flex flex-col items-center gap-8 mb-12">
         <BlurFade delay={0.5} inView>
-          <p className="text-md text-black font-medium mx-auto max-w-4xl text-center text-pretty">
-            {content}
-          </p>
+          <div
+            className="text-md text-black font-medium mx-auto max-w-4xl text-center text-pretty"
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
         </BlurFade>
         <BlurFade delay={0.75} inView>
           <div className="relative mx-auto rounded-lg overflow-hidden">

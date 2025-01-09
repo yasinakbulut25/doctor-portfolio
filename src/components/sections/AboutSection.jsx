@@ -9,8 +9,7 @@ import { Button } from "@nextui-org/react";
 import { getUser } from "@/api/endpoints";
 
 async function AboutSection() {
-  const getData = getUser();
-  const data = await Promise.resolve(getData);
+  const data = await getUser();
   if (!data) return;
 
   const { content, image } = data.about;
@@ -25,7 +24,7 @@ async function AboutSection() {
       />
       <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 items-center gap-8 px-4">
         <BlurFade delay={0.5} inView>
-          <p
+          <div
             className="text-md text-black font-medium mx-auto"
             dangerouslySetInnerHTML={{ __html: content }}
           />

@@ -13,7 +13,7 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { BarsIcon, XMarkIcon, StethoscopeIcon } from "@/icons";
-import { BASE_URL } from "@/app/layout";
+import { BASE_URL } from "@/app/layout"
 
 function Navbar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();

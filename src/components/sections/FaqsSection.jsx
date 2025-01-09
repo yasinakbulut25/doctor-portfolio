@@ -9,12 +9,11 @@ import { QuestionCircleIcon } from "@/icons";
 import BlurFade from "@/components/ui/blur-fade";
 import { getQuestions } from "@/api/endpoints";
 
-async function FaqsSection() {
-  const getData = getQuestions();
-  const data = await Promise.resolve(getData);
+export default async function FaqsSection() {
+  const data = await getQuestions();
   const activeData = data.filter((item) => !item.deleted_at);
 
-  if (!data || !activeData || activeData.length === 0) return;
+  if (!activeData || activeData.length === 0) return null;
 
   return (
     <section className="md:container mx-auto px-4 mb-12" id="sss">
@@ -41,5 +40,3 @@ async function FaqsSection() {
     </section>
   );
 }
-
-export default FaqsSection;

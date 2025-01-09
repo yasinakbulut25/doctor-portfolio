@@ -6,6 +6,7 @@ import ServicesSection from "@/components/sections/ServicesSection";
 import CommentsSection from "@/components/sections/CommentsSection";
 import BlogsSection from "@/components/sections/BlogsSection";
 import FaqsSection from "@/components/sections/FaqsSection";
+import ContactSection from "@/components/sections/ContactSection";
 
 export default function Page() {
   return (
@@ -16,7 +17,7 @@ export default function Page() {
         <AboutSection />
         <CommentsSection />
         <BlogsSection />
-        {/* <ContactSection /> */}
+        <ContactSection />
         <FaqsSection />
       </Suspense>
     </div>

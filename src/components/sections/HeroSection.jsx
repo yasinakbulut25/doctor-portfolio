@@ -5,8 +5,7 @@ import { DotPattern } from "@/components/ui/dot-pattern";
 import { getUser } from "@/api/endpoints";
 
 async function HeroSection() {
-  const getData = getUser();
-  const data = await Promise.resolve(getData);
+  const data = await getUser();
   if (!data) return;
 
   const { titleName, titleBlack, titlePurple, description, image } = data.hero;

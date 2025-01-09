@@ -8,8 +8,7 @@ import CommentCard from "./CommentCard";
 import { getComments } from "@/api/endpoints";
 
 async function CommentsSection() {
-  const getData = getComments();
-  const data = await Promise.resolve(getData);
+  const data = await getComments();
   const activeData = data.filter(
     (item) => Number(item.publish) === 1 && !item.deleted_at
   );

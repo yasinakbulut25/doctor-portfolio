@@ -1,0 +1,42 @@
+import React from "react";
+import Blogs from "../../yazilar/page";
+import moment from "moment";
+import "moment/locale/tr";
+import { getBlog } from "@/api/endpoints";
+
+async function BlogDetail({ params }) {
+  const param = await params;
+  const url = param.url;
+  const data = await getBlog(url);
+  const selectedData = data[0];
+  if (!selectedData) return;
+
+  const { date, title, content, image } = selectedData;
+  const turkishDate = moment(date).locale("tr").format("D MMMM, YYYY");
+
+  return (
+    <>
+      <div className="mx-auto w-full max-w-3xl px-4 mb-12">
+        <div className="flex flex-col gap-1">
+          <p className="text-sm text-slate-600">
+            <time dateTime="2022-02-08" title="February 8th, 2022">
+              {turkishDate}
+            </time>
+          </p>
+          <h1 className="mb-4 text-2xl font-extrabold text-gray-900 lg:mb-6 lg:text-4xl">
+            {title}
+          </h1>
+          <img src={image} alt={title} width={800} height={400} />
+        </div>
+        <div
+          className="article-content"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      </div>
+
+      <Blogs isDetailPage={true} />
+    </>
+  );
+}
+
+export default BlogDetail;

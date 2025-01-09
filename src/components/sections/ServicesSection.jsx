@@ -5,8 +5,7 @@ import SectionTitle from "./SectionTitle";
 import { getServices } from "@/api/endpoints";
 
 async function ServicesSection() {
-  const getData = getServices();
-  const data = await Promise.resolve(getData);
+  const data = await getServices();
   const activeData = data.filter(
     (item) => Number(item.publish) === 1 && !item.deleted_at
   );

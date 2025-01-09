@@ -4,8 +4,7 @@ import { StethoscopeIcon } from "@/icons/StethoscopeIcon";
 import { getSections } from "@/api/endpoints";
 
 async function SectionTitle({ icon, sectionKey }) {
-  const getData = getSections();
-  const data = await Promise.resolve(getData);
+  const data = await getSections();
   const section = data.find((section) => section.sectionKey === sectionKey);
   if (!data || !section) return;
 
