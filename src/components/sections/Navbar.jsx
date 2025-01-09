@@ -13,7 +13,8 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { BarsIcon, XMarkIcon, StethoscopeIcon } from "@/icons";
-import { BASE_URL } from "@/app/layout"
+import { BASE_URL } from "@/app/layout";
+import Image from "next/image";
 
 function Navbar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -67,24 +68,36 @@ function Navbar() {
         isScrolled ? "bg-white shadow-md" : "bg-transparent"
       }`}
     >
-      <div className="md:flex hidden gap-4 items-center mx-auto h-full">
-        {routes.map((route, index) => (
-          <Button
-            as={Link}
-            key={index}
-            className={`navLink relative text-sm font-medium py-6 px-2 hover:text-purple-600 bg-transparent rounded-sm h-full ${
-              activeSection === route.sectionID && isHomePage
-                ? "text-purple-600 active"
-                : "text-black"
-            } duration-300`}
-            href={`${BASE_URL}#${route.sectionID}`}
-            startContent={route.icon}
-          >
-            {route.name}
-          </Button>
-        ))}
+      <div className="lg:flex hidden gap-4 items-center mx-auto justify-between w-full max-w-7xl h-full">
+        <div className="flex items-center gap-2">
+          <Image
+            className="rounded-md object-cover"
+            src="/uploads/logo.svg"
+            alt="Doç. Dr. Arzu Yurci"
+            width={50}
+            height={50}
+          />
+          <h3 className="text-black font-bold text-lg">Doç. Dr. Arzu Yurci</h3>
+        </div>
+        <div className="flex items-center gap-2">
+          {routes.map((route, index) => (
+            <Button
+              as={Link}
+              key={index}
+              className={`navLink relative text-sm font-medium py-6 px-2 hover:text-purple-600 bg-transparent rounded-sm h-full ${
+                activeSection === route.sectionID && isHomePage
+                  ? "text-purple-600 active"
+                  : "text-black"
+              } duration-300`}
+              href={`${BASE_URL}#${route.sectionID}`}
+              startContent={route.icon}
+            >
+              {route.name}
+            </Button>
+          ))}
+        </div>
       </div>
-      <div className="flex justify-between items-center w-full md:hidden">
+      <div className="flex justify-between items-center w-full lg:hidden">
         <Button
           className="min-w-max px-3"
           color="secondary"
@@ -93,9 +106,16 @@ function Navbar() {
             isOpen ? <XMarkIcon width={24} /> : <BarsIcon width={24} />
           }
         />
-        <h3 className="text-black flex items-center gap-2 font-bold text-lg">
-          <StethoscopeIcon width={20} color="#9c40ff" /> Doç. Dr. Arzu Yurci
-        </h3>
+        <div className="flex items-center gap-2">
+          <h3 className="text-black font-bold text-lg">Doç. Dr. Arzu Yurci</h3>
+          <Image
+            className="rounded-md object-cover"
+            src="/uploads/logo.svg"
+            alt="Doç. Dr. Arzu Yurci"
+            width={50}
+            height={50}
+          />
+        </div>
       </div>
       <Drawer
         isOpen={isOpen}

@@ -6,17 +6,7 @@ export const metadata = {
 function Home({ children }) {
   return (
     <div className="pt-[100px] min-h-[650px] overflow-x-hidden">
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 grid grid-cols-2 opacity-40 max-w-full"
-        style={{ zIndex: 0 }}
-      >
-        <div className="blur-[106px] h-56 bg-gradient-to-br from-purple-600 to-purple-400" />
-        <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300" />
-      </div>
-      <div className="relative" style={{ zIndex: 9 }}>
-        {children}
-      </div>
+      <div className="relative">{children}</div>
     </div>
   );
 }

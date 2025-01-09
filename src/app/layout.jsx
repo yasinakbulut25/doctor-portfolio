@@ -8,7 +8,7 @@ const montserrat = Montserrat({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
-export const BASE_URL = 'http://localhost:3001/';
+export const BASE_URL = "http://localhost:3001/";
 
 export default function RootLayout({ children }) {
   return (

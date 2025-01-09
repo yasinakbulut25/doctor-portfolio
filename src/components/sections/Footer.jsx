@@ -1,6 +1,7 @@
 import { StethoscopeIcon } from "@/icons";
 import { routes } from "@/routes";
 import { Button } from "@nextui-org/react";
+import Image from "next/image";
 import Link from "next/link";
 
 function Footer() {
@@ -9,7 +10,13 @@ function Footer() {
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="flex md:flex-row flex-col items-center justify-between gap-4">
           <h3 className="text-black flex items-center gap-2 font-bold text-lg">
-            <StethoscopeIcon width={20} color="#9c40ff" /> Doç. Dr. Arzu Yurci
+            <Image
+              className="rounded-md object-cover"
+              src="/uploads/logo.svg"
+              alt="Doç. Dr. Arzu Yurci"
+              width={120}
+              height={120}
+            />
           </h3>
           <div className="md:flex hidden gap-2 items-center h-full">
             {routes.map((route, index) => (
