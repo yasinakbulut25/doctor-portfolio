@@ -6,6 +6,38 @@ import { BorderBeam } from "@/components/ui/border-beam";
 import CommentsSection from "@/components/sections/CommentsSection";
 import { getUser } from "@/api/endpoints";
 
+export async function generateMetadata() {
+  const data = await getUser();
+  const selectedData = data.about;
+
+  if (!selectedData) {
+    return {
+      title: "Yazı bulunamadı",
+      description: "Aradığınız yazı mevcut değil.",
+    };
+  }
+
+  const { content, image } = selectedData;
+
+  const title = "Doç. Dr. Arzu Yurci | Hakkımda";
+  return {
+    title: title,
+    description: content.slice(0, 160),
+    openGraph: {
+      title: title,
+      description: content.slice(0, 160),
+      images: [image],
+      url: `https://arzuyurci.com/hakkimda`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: title,
+      description: content.slice(0, 160),
+      images: [image],
+    },
+  };
+}
+
 async function AboutPage() {
   const data = await getUser();
   if (!data) return;
