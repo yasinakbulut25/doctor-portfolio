@@ -6,9 +6,8 @@ import { BorderBeam } from "@/components/ui/border-beam";
 import CommentsSection from "@/components/sections/CommentsSection";
 import { getUser } from "@/api/endpoints";
 
-export async function generateMetadata({ params }) {
-  const { url } = params;
-  const data = await getUser(url);
+export async function generateMetadata() {
+  const data = await getUser();
   const selectedData = data.about;
 
   if (!selectedData) {
