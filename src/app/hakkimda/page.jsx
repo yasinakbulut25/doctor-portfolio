@@ -5,6 +5,7 @@ import Image from "next/image";
 import { BorderBeam } from "@/components/ui/border-beam";
 import CommentsSection from "@/components/sections/CommentsSection";
 import { getUser } from "@/api/endpoints";
+import { sectionKeys } from "@/routes";
 
 export async function generateMetadata() {
   const data = await getUser();
@@ -47,10 +48,8 @@ async function AboutPage() {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionTitle
-        title="Beni Tanıyın"
-        subTitle="Hakkımda"
-        description="Hayat hikayem, değerlerim ve profesyonel deneyimlerim hakkında bilgi edinin."
         icon={<UserIcon className="w-4 h-4" color="#9c40ff" />}
+        sectionKey={sectionKeys.about}
       />
       <div className="flex flex-col items-center gap-8 mb-12">
         <BlurFade delay={0.5} inView>

@@ -5,7 +5,8 @@ import { Button } from "@nextui-org/react";
 import { ChatDotsIcon } from "@/icons";
 import Link from "next/link";
 import CommentCard from "./CommentCard";
-import { getComments } from "@/api/endpoints";
+import { getComments, getSections } from "@/api/endpoints";
+import { sectionKeys } from "@/routes";
 
 async function CommentsSection() {
   const data = await getComments();
@@ -13,7 +14,14 @@ async function CommentsSection() {
     (item) => Number(item.publish) === 1 && !item.deleted_at
   );
 
-  if (!data || !activeData || activeData.length === 0) return;
+  const sections = await getSections();
+  const section = sections.find(
+    (section) =>
+      section.sectionKey === sectionKeys.comments &&
+      Number(section.publish) === 1
+  );
+
+  if (!data || !activeData || activeData.length === 0 || !section) return;
 
   const firstRow = activeData.slice(0, activeData.length / 2);
   const secondRow = activeData.slice(activeData.length / 2);
@@ -21,10 +29,8 @@ async function CommentsSection() {
   return (
     <section className="mb-12" id="yorumlar">
       <SectionTitle
-        title="Ziyaretçi Görüşleri"
-        subTitle="Yorumlar"
-        description="Beni tercih edenlerin yorumlarını inceleyin ve düşüncelerini öğrenin."
         icon={<ChatDotsIcon className="w-4 h-4" color="#9c40ff" />}
+        sectionKey={sectionKeys.comments}
       />
       <BlurFade delay={0.5} inView>
         <div className="relative max-w-7xl mx-auto flex w-full flex-col items-center justify-center overflow-hidden">

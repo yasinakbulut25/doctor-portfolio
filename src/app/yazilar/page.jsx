@@ -5,6 +5,7 @@ import BlurFade from "@/components/ui/blur-fade";
 import SectionTitle from "@/components/sections/SectionTitle";
 import { getBlogs } from "@/api/endpoints";
 import BlogCard from "@/components/sections/BlogCard";
+import { sectionKeys } from "@/routes";
 
 export const metadata = {
   title: "Doç. Dr. Arzu Yurci | Yazılar",
@@ -27,10 +28,8 @@ async function Blogs({ isDetailPage }) {
   return (
     <section className="mx-auto max-w-7xl mb-12" id="yazilar">
       <SectionTitle
-        title={isDetailPage ? "Diğer Yazılar" : "Sağlık İçin Bilgi"}
-        subTitle="Yazılarım"
-        description="Sağlıklı yaşam, kadın sağlığı trendleri ve bilinmesi gerekenler bu sayfada sizi bekliyor."
         icon={<PenIcon className="w-4 h-4" color="#9c40ff" />}
+        sectionKey={sectionKeys.blogs}
       />
       <div className="grid gap-4 md:gap-8 md:grid-cols-2 lg:grid-cols-3 px-4">
         {activeData.map((post, index) => (

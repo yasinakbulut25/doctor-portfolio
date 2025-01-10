@@ -5,6 +5,7 @@ import SectionTitle from "@/components/sections/SectionTitle";
 import BlurFade from "@/components/ui/blur-fade";
 import FaqsSection from "@/components/sections/FaqsSection";
 import { getComments } from "@/api/endpoints";
+import { sectionKeys } from "@/routes";
 
 export const metadata = {
   title: "Doç. Dr. Arzu Yurci | Görüşler",
@@ -23,10 +24,8 @@ async function CommentsPage() {
   return (
     <div className="max-w-7xl w-full mx-auto">
       <SectionTitle
-        title="Ziyaretçi Görüşleri"
-        subTitle="Yorumlar"
-        description="Beni tercih edenlerin yorumlarını inceleyin ve düşüncelerini öğrenin."
         icon={<ChatDotsIcon className="w-4 h-4" color="#9c40ff" />}
+        sectionKey={sectionKeys.comments}
       />
       <div className="lg:columns-4 md:columns-3 sm:columns-2 columns-1 gap-4 px-4 mb-12">
         {activeData.map((review, index) => (

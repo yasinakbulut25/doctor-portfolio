@@ -3,20 +3,26 @@ import SectionTitle from "./SectionTitle";
 import { BorderBeam } from "@/components/ui/border-beam";
 import ContactBoxes from "./ContactBoxes";
 import ContactForm from "./ContactForm";
-import { getUser } from "@/api/endpoints";
+import { getSections, getUser } from "@/api/endpoints";
+import { sectionKeys } from "@/routes";
 
 async function ContactSection() {
   const data = await getUser();
-  if (!data) return;
+  const sections = await getSections();
+  const section = sections.find(
+    (section) =>
+      section.sectionKey === sectionKeys.contact &&
+      Number(section.publish) === 1
+  );
+
+  if (!data || !section) return;
 
   const { map } = data.admin;
   return (
     <section className="mb-12 px-4" id="iletisim">
       <SectionTitle
-        title="Bana Ulaşın"
-        subTitle="İletişim"
-        description="Sorularınız veya önerileriniz için benimle iletişime geçin."
         icon={<BellIcon className="w-4 h-4" color="#9c40ff" />}
+        sectionKey={sectionKeys.contact}
       />
       <div className="relative max-w-7xl mx-auto bg-white md px-8 py-12 rounded-2xl mt-4">
         <ContactForm map={map} />

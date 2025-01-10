@@ -6,21 +6,26 @@ import { BorderBeam } from "@/components/ui/border-beam";
 import BlurFade from "@/components/ui/blur-fade";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
-import { getUser } from "@/api/endpoints";
+import { getSections, getUser } from "@/api/endpoints";
+import { sectionKeys } from "@/routes";
 
 async function AboutSection() {
   const data = await getUser();
-  if (!data) return;
+  const sections = await getSections();
+  const section = sections.find(
+    (section) =>
+      section.sectionKey === sectionKeys.about && Number(section.publish) === 1
+  );
+
+  if (!data || !section) return;
 
   const { content, image } = data.about;
 
   return (
     <section className="mb-12" id="hakkimda">
       <SectionTitle
-        title="Beni Tanıyın"
-        subTitle="Hakkımda"
-        description="Hayat hikayem, değerlerim ve profesyonel deneyimlerim hakkında bilgi edinin."
         icon={<UserIcon className="w-4 h-4" color="#9c40ff" />}
+        sectionKey={sectionKeys.about}
       />
       <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 items-center gap-8 px-4">
         <BlurFade delay={0.5} inView>

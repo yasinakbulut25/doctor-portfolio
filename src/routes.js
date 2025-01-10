@@ -8,6 +8,15 @@ import {
   HomeIcon
 } from "@/icons";
 
+export const sectionKeys = {
+  services: "sectionServices",
+  about: "sectionAbout",
+  comments: "sectionComments",
+  blogs: "sectionBlogs",
+  contact: "sectionContact",
+  faqs: "sectionFaqs",
+}
+
 export const routes = [
   {
     name: 'Ana Sayfa',
@@ -20,41 +29,41 @@ export const routes = [
     path: 'hizmetler',
     sectionID: 'hizmetler',
     icon: <StethoscopeIcon width={16} color="#9c40ff" />,
-    sectionKey: "sectionServices",
+    sectionKey: sectionKeys.services
   },
   {
     name: 'Hakkımda',
     path: 'hakkimda',
     sectionID: 'hakkimda',
     icon: <UserIcon width={16} color="#9c40ff" />,
-    sectionKey: "sectionAbout",
+    sectionKey: sectionKeys.about
   },
   {
     name: 'Yorumlar',
     path: 'yorumlar',
     sectionID: 'yorumlar',
     icon: <ChatDotsIcon width={16} color="#9c40ff" />,
-    sectionKey: "sectionComments",
+    sectionKey: sectionKeys.comments
   },
   {
     name: 'Yazılar',
     path: 'yazilar',
     sectionID: 'yazilar',
     icon: <PenIcon width={16} color="#9c40ff" />,
-    sectionKey: "sectionBlogs",
+    sectionKey: sectionKeys.blogs
   },
   {
     name: 'İletişim',
     path: 'iletisim',
     sectionID: 'iletisim',
     icon: <BellIcon width={16} color="#9c40ff" />,
-    sectionKey: "sectionContact",
+    sectionKey: sectionKeys.contact
   },
   {
     name: 'SSS',
     path: 'sss',
     sectionID: 'sss',
     icon: <QuestionCircleIcon width={16} color="#9c40ff" />,
-    sectionKey: "sectionFaqs",
+    sectionKey: sectionKeys.faqs
   }
 ]

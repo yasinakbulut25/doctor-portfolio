@@ -2,19 +2,27 @@ import Image from "next/image";
 import { BorderBeam } from "@/components/ui/border-beam";
 import BlurFade from "@/components/ui/blur-fade";
 import SectionTitle from "./SectionTitle";
-import { getServices } from "@/api/endpoints";
+import { getSections, getServices } from "@/api/endpoints";
+import { sectionKeys } from "@/routes";
 
 async function ServicesSection() {
   const data = await getServices();
+  const sections = await getSections();
+  const section = sections.find(
+    (section) =>
+      section.sectionKey === sectionKeys.services &&
+      Number(section.publish) === 1
+  );
+
   const activeData = data.filter(
     (item) => Number(item.publish) === 1 && !item.deleted_at
   );
 
-  if (!data || !activeData || activeData.length === 0) return;
+  if (!data || !activeData || activeData.length === 0 || !section) return;
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 mb-12" id="hizmetler">
-      <SectionTitle sectionKey="sectionServices" />
+      <SectionTitle sectionKey={sectionKeys.services} />
       <div className="columns-1 sm:columns-2 lg:columns-3">
         {activeData.map((service, index) => (
           <BlurFade
