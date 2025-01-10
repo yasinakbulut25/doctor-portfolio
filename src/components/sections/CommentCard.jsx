@@ -1,7 +1,10 @@
 import { cn } from "@/lib/utils";
+import moment from "moment";
+import "moment/locale/tr";
 
 function CommentCard({ review, isCommentsPage }) {
   const { name, date, description } = review;
+  const turkishDate = moment(date).locale("tr").format("D MMMM, YYYY");
 
   return (
     <figure
@@ -14,7 +17,7 @@ function CommentCard({ review, isCommentsPage }) {
       <div className="flex flex-row items-center gap-2">
         <div className="flex flex-col">
           <h4 className="text-sm text-purple-600 font-medium">{name}</h4>
-          <p className="text-xs text-slate-600">{date}</p>
+          <p className="text-xs text-slate-600">{turkishDate}</p>
         </div>
       </div>
       <blockquote className="mt-2 text-sm text-black">{description}</blockquote>
