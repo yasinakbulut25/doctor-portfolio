@@ -4,6 +4,38 @@ import moment from "moment";
 import "moment/locale/tr";
 import { getBlog } from "@/api/endpoints";
 
+export async function generateMetadata({ params }) {
+  const { url } = params;
+  const data = await getBlog(url);
+  const selectedData = data[0];
+
+  if (!selectedData) {
+    return {
+      title: "Yazı bulunamadı",
+      description: "Aradığınız yazı mevcut değil.",
+    };
+  }
+
+  const { title, content, image } = selectedData;
+
+  return {
+    title: title,
+    description: content.slice(0, 160),
+    openGraph: {
+      title: title,
+      description: content.slice(0, 160),
+      images: [image],
+      url: `https://arzuyurci.com/yazi/${url}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: title,
+      description: content.slice(0, 160),
+      images: [image],
+    },
+  };
+}
+
 async function BlogDetail({ params }) {
   const param = await params;
   const url = param.url;
@@ -26,7 +58,7 @@ async function BlogDetail({ params }) {
           <h1 className="mb-4 text-2xl font-extrabold text-gray-900 lg:mb-6 lg:text-4xl">
             {title}
           </h1>
-          <img src={image} alt={title} width={800} height={400} />
+          <img className="w-max max-w-full lg:max-h-[400px] sm:max-h-[300px] max-h-[200px] object-contain" src={image} alt={title} width={800} height={400} />
         </div>
         <div
           className="article-content"

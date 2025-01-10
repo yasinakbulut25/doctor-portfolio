@@ -6,6 +6,12 @@ import SectionTitle from "@/components/sections/SectionTitle";
 import { getBlogs } from "@/api/endpoints";
 import BlogCard from "@/components/sections/BlogCard";
 
+export const metadata = {
+  title: "Doç. Dr. Arzu Yurci | Yazılar",
+  description:
+    "Kadın Hastalıkları ve Doğum, Tüp Bebek Uzmanı ile sağlığınıza önem verin. Gebelik takibi, kısırlık tedavisi ve tüp bebek uygulamalarında uzman destek alın. Sağlıklı bir gelecek için yanınızdayız.",
+};
+
 async function Blogs({ isDetailPage }) {
   const data = await getBlogs();
   let activeData = data.filter(

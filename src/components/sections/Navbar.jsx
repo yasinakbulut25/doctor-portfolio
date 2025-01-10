@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { routes } from "@/routes";
 import Link from "next/link";
 import {
   Drawer,
@@ -12,15 +11,17 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
-import { BarsIcon, XMarkIcon, StethoscopeIcon } from "@/icons";
+import { BarsIcon, XMarkIcon } from "@/icons";
 import { BASE_URL } from "@/app/layout";
 import Image from "next/image";
+import useRoutes from "@/hooks/useRoutes";
 
 function Navbar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const pathname = usePathname();
+  const routes = useRoutes();
 
   const isHomePage = pathname === "/";
   useEffect(() => {

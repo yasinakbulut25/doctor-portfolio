@@ -20,7 +20,7 @@ function BlogCard({ post, index }) {
               loading="lazy"
               width={350}
               height={250}
-              className="max-h-[350px] h-auto w-full object-cover object-center transition duration-500 group-hover:scale-105"
+              className="max-h-[250px] h-auto w-full object-cover object-center transition duration-500 group-hover:scale-105"
             />
           </div>
           <h3 className="text-lg font-bold text-black group-hover:text-purple-600 duration-300">

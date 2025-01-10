@@ -1,11 +1,16 @@
 import React from "react";
 import { ChatDotsIcon } from "@/icons";
 import CommentCard from "@/components/sections/CommentCard";
-import { reviews } from "@/components/sections/CommentsSection";
 import SectionTitle from "@/components/sections/SectionTitle";
 import BlurFade from "@/components/ui/blur-fade";
 import FaqsSection from "@/components/sections/FaqsSection";
 import { getComments } from "@/api/endpoints";
+
+export const metadata = {
+  title: "Doç. Dr. Arzu Yurci | Görüşler",
+  description:
+    "Kadın Hastalıkları ve Doğum, Tüp Bebek Uzmanı ile sağlığınıza önem verin. Gebelik takibi, kısırlık tedavisi ve tüp bebek uygulamalarında uzman destek alın. Sağlıklı bir gelecek için yanınızdayız.",
+};
 
 async function CommentsPage() {
   const data = await getComments();

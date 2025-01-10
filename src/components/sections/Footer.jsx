@@ -1,10 +1,13 @@
-import { StethoscopeIcon } from "@/icons";
-import { routes } from "@/routes";
+"use client";
+
+import useRoutes from "@/hooks/useRoutes";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
 
 function Footer() {
+  const routes = useRoutes();
+
   return (
     <footer className="bg-white border-t border-gray-200 mt-12">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
