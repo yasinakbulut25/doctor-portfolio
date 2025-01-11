@@ -13,17 +13,29 @@ export const metadata = {
     "Kadın Hastalıkları ve Doğum, Tüp Bebek Uzmanı ile sağlığınıza önem verin. Gebelik takibi, kısırlık tedavisi ve tüp bebek uygulamalarında uzman destek alın. Sağlıklı bir gelecek için yanınızdayız.",
 };
 
-async function Blogs({ isDetailPage }) {
+async function Blogs({ isDetailPage, url }) {
   const data = await getBlogs();
   let activeData = data.filter(
     (item) => Number(item.publish) === 1 && !item.deleted_at
   );
 
-  if (!data || !activeData || activeData.length === 0) return;
-
   if (isDetailPage) {
-    activeData = activeData.slice(0, 3);
+    const filteredData = activeData.filter((item) => item.url !== url);
+    if (filteredData.length <= 3) {
+      activeData = filteredData;
+    } else {
+      activeData = [];
+      while (activeData.length < 3) {
+        const randomIndex = Math.floor(Math.random() * filteredData.length);
+        const selected = filteredData[randomIndex];
+        if (!activeData.includes(selected)) {
+          activeData.push(selected);
+        }
+      }
+    }
   }
+
+  if (!data || !activeData || activeData.length === 0) return;
 
   return (
     <section className="mx-auto max-w-7xl mb-12" id="yazilar">

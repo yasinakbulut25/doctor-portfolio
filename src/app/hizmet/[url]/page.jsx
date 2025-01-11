@@ -1,12 +1,11 @@
 import React from "react";
-import Blogs from "../../yazilar/page";
-import moment from "moment";
 import "moment/locale/tr";
-import { getBlog } from "@/api/endpoints";
+import { getService } from "@/api/endpoints";
+import ServicesSection from "@/components/sections/ServicesSection";
 
 export async function generateMetadata({ params }) {
   const { url } = params;
-  const data = await getBlog(url);
+  const data = await getService(url);
   const selectedData = data[0];
 
   if (!selectedData) {
@@ -25,7 +24,7 @@ export async function generateMetadata({ params }) {
       title: title,
       description: content.slice(0, 160),
       images: [image],
-      url: `https://arzuyurci.com/yazi/${url}`,
+      url: `https://arzuyurci.com/hizmet/${url}`,
     },
     twitter: {
       card: "summary_large_image",
@@ -36,39 +35,42 @@ export async function generateMetadata({ params }) {
   };
 }
 
-async function BlogDetail({ params }) {
+async function ServiceDetail({ params }) {
   const param = await params;
   const url = param.url;
-  const data = await getBlog(url);
+  const data = await getService(url);
   const selectedData = data[0];
   if (!selectedData) return;
 
-  const { date, title, content, image } = selectedData;
-  const turkishDate = moment(date).locale("tr").format("D MMMM, YYYY");
+  const { title, description, content, image } = selectedData;
 
   return (
     <>
-      <div className="mx-auto w-full max-w-3xl px-4 mb-12">
+      <div className="flex flex-col gap-4 mx-auto w-full max-w-4xl px-4 mb-12">
         <div className="flex flex-col gap-1">
-          <p className="text-sm text-slate-600">
-            <time dateTime="2022-02-08" title="February 8th, 2022">
-              {turkishDate}
-            </time>
-          </p>
           <h1 className="mb-4 text-2xl font-extrabold text-gray-900 lg:mb-6 lg:text-4xl">
             {title}
           </h1>
-          <img className="w-max max-w-full lg:max-h-[400px] sm:max-h-[300px] max-h-[200px] object-contain" src={image} alt={title} width={800} height={400} />
+          <img
+            className="w-max max-w-full lg:max-h-[400px] sm:max-h-[300px] max-h-[200px] object-contain"
+            src={image}
+            alt={title}
+            width={800}
+            height={400}
+          />
         </div>
+        <i className="border-l-2 border-purple-400 pl-3 py-1 text-sm mt-3">
+          {description}
+        </i>
         <div
           className="article-content"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </div>
 
-      <Blogs isDetailPage={true} url={url} />
+      <ServicesSection isDetailPage={true} url={url} />
     </>
   );
 }
 
-export default BlogDetail;
+export default ServiceDetail;
