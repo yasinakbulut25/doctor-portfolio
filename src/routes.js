@@ -5,7 +5,8 @@ import {
   BellIcon,
   UserIcon,
   PenIcon,
-  HomeIcon
+  HomeIcon,
+  ImageIcon
 } from "@/icons";
 
 export const sectionKeys = {
@@ -15,6 +16,7 @@ export const sectionKeys = {
   blogs: "sectionBlogs",
   contact: "sectionContact",
   faqs: "sectionFaqs",
+  gallery: "sectionGallery",
 }
 
 export const routes = [
@@ -52,6 +54,13 @@ export const routes = [
     sectionID: 'yazilar',
     icon: <PenIcon width={16} color="#9c40ff" />,
     sectionKey: sectionKeys.blogs
+  },
+  {
+    name: 'Foto Galeri',
+    path: 'galeri',
+    sectionID: 'galeri',
+    icon: <ImageIcon width={16} color="#9c40ff" />,
+    sectionKey: sectionKeys.gallery
   },
   {
     name: 'İletişim',

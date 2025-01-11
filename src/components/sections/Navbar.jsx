@@ -104,13 +104,14 @@ function Navbar() {
             <div key={index} className="group navLink relative">
               <Button
                 as={Link}
-                className={`relative text-sm font-medium py-6 px-2 group-hover:text-purple-600 data-[hover=true]:opacity-100 bg-transparent rounded-sm h-full overflow-visible ${
+                className={`navLink relative text-sm font-medium py-6 px-2 group-hover:text-purple-600 data-[hover=true]:opacity-100 bg-transparent rounded-sm h-full overflow-visible ${
                   activeSection === route.sectionID && isHomePage
                     ? "text-purple-600 active"
                     : "text-black"
                 } duration-300`}
                 href={`${BASE_URL}#${route.sectionID}`}
                 startContent={route.icon}
+                endContent={route.hasDropdown && <ChevronRight className='w-4 transform rotate-90 text-purple-500' />}
               >
                 {route.name}
               </Button>

@@ -7,6 +7,7 @@ import CommentsSection from "@/components/sections/CommentsSection";
 import BlogsSection from "@/components/sections/BlogsSection";
 import FaqsSection from "@/components/sections/FaqsSection";
 import ContactSection from "@/components/sections/ContactSection";
+import Gallery from "@/components/sections/GallerySection";
 
 export const metadata = {
   title: "Doç. Dr. Arzu Yurci | Kadın Sağlığı ve Tüp Bebek",
@@ -23,6 +24,7 @@ export default function Page() {
         <AboutSection />
         <CommentsSection />
         <BlogsSection />
+        <Gallery />
         <ContactSection />
         <FaqsSection />
       </Suspense>
