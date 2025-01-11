@@ -6,6 +6,7 @@ import { getGallery, getSections } from "@/api/endpoints";
 
 async function Gallery() {
   const data = await getGallery();
+  const activeData = data.filter((item) => !item.deleted_at);
 
   const sections = await getSections();
   const section = sections.find(
@@ -14,10 +15,10 @@ async function Gallery() {
       Number(section.publish) === 1
   );
 
-  if (!data || data.length === 0 || !section) return null;
+  if (!activeData || activeData.length === 0 || !section) return null;
 
   const allImages = [];
-  data.map((item) => allImages.push(item.image));
+  activeData.map((item) => allImages.push(item.image));
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 mb-12" id="galeri">
