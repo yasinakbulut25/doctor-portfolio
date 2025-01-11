@@ -29,7 +29,8 @@ export const routes = [
     path: 'hizmetler',
     sectionID: 'hizmetler',
     icon: <StethoscopeIcon width={16} color="#9c40ff" />,
-    sectionKey: sectionKeys.services
+    sectionKey: sectionKeys.services,
+    hasDropdown: true
   },
   {
     name: 'Hakkımda',

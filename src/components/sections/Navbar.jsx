@@ -11,15 +11,18 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
-import { BarsIcon, XMarkIcon } from "@/icons";
+import { BarsIcon, ChevronRight, XMarkIcon } from "@/icons";
 import { BASE_URL } from "@/app/layout";
 import Image from "next/image";
 import useRoutes from "@/hooks/useRoutes";
+import { getServices } from "@/api/endpoints";
 
 function Navbar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [servicesRoutes, setServicesRoutes] = useState([]);
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const pathname = usePathname();
   const routes = useRoutes();
 
@@ -34,6 +37,22 @@ function Navbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getServices();
+        let activeData = data.filter(
+          (item) => Number(item.publish) === 1 && !item.deleted_at
+        );
+        setServicesRoutes(activeData);
+      } catch (error) {
+        console.error("API isteği sırasında bir hata oluştu:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -82,19 +101,33 @@ function Navbar() {
         </div>
         <div className="flex items-center gap-2">
           {routes.map((route, index) => (
-            <Button
-              as={Link}
-              key={index}
-              className={`navLink relative text-sm font-medium py-6 px-2 hover:text-purple-600 bg-transparent rounded-sm h-full ${
-                activeSection === route.sectionID && isHomePage
-                  ? "text-purple-600 active"
-                  : "text-black"
-              } duration-300`}
-              href={`${BASE_URL}#${route.sectionID}`}
-              startContent={route.icon}
-            >
-              {route.name}
-            </Button>
+            <div key={index} className="group navLink relative">
+              <Button
+                as={Link}
+                className={`relative text-sm font-medium py-6 px-2 group-hover:text-purple-600 data-[hover=true]:opacity-100 bg-transparent rounded-sm h-full overflow-visible ${
+                  activeSection === route.sectionID && isHomePage
+                    ? "text-purple-600 active"
+                    : "text-black"
+                } duration-300`}
+                href={`${BASE_URL}#${route.sectionID}`}
+                startContent={route.icon}
+              >
+                {route.name}
+              </Button>
+              {route.hasDropdown && servicesRoutes.length > 0 && (
+                <div className="absolute top-[72px] left-0 w-max max-w-[200px] hidden shadow-md group-hover:flex flex-col bg-white">
+                  {servicesRoutes.map((item, index) => (
+                    <Link
+                      key={index}
+                      href={`hizmet/${item.url}`}
+                      className="whitespace-normal text-sm text-black hover:text-purple-500 p-3 border-b border-slate-200"
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </div>
@@ -132,22 +165,68 @@ function Navbar() {
               </DrawerHeader>
               <DrawerBody>
                 <div className="flex flex-col gap-3">
-                  {routes.map((route, index) => (
-                    <Button
-                      as={Link}
-                      key={index}
-                      onPress={onClose}
-                      className={`relative text-sm font-medium p-2 hover:text-purple-600 bg-transparent justify-start ${
-                        activeSection === route.sectionID && isHomePage
-                          ? "text-purple-600 active"
-                          : "text-black"
-                      } duration-300`}
-                      href={`${BASE_URL}#${route.sectionID}`}
-                      startContent={route.icon}
-                    >
-                      {route.name}
-                    </Button>
-                  ))}
+                  {routes.map((route, index) => {
+                    if (route.hasDropdown) {
+                      return (
+                        <div key={index} className="relative">
+                          <Button
+                            onPress={() =>
+                              setIsServicesDropdownOpen(!isServicesDropdownOpen)
+                            }
+                            className={`relative w-full text-sm font-medium p-2 hover:text-purple-600 bg-transparent justify-start ${
+                              activeSection === route.sectionID && isHomePage
+                                ? "text-purple-600 active"
+                                : "text-black"
+                            } duration-300`}
+                            href={`${BASE_URL}#${route.sectionID}`}
+                            startContent={route.icon}
+                            endContent={
+                              <ChevronRight
+                                className={`transform ml-auto ${
+                                  isServicesDropdownOpen
+                                    ? "-rotate-90"
+                                    : "rotate-90"
+                                } w-4 text-purple-500 duration-300`}
+                              />
+                            }
+                          >
+                            {route.name}
+                          </Button>
+                          {isServicesDropdownOpen &&
+                            servicesRoutes.length > 0 && (
+                              <div className="w-full flex group-hover:flex flex-col bg-white pl-3">
+                                {servicesRoutes.map((item, index) => (
+                                  <Link
+                                    onClick={onClose}
+                                    key={index}
+                                    href={`hizmet/${item.url}`}
+                                    className="whitespace-normal text-sm text-black hover:text-purple-500 py-3 border-b border-b-slate-200"
+                                  >
+                                    {item.title}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                        </div>
+                      );
+                    }
+                    return (
+                      <Button
+                        key={index}
+                        as={Link}
+                        onPress={onClose}
+                        className={`relative w-full text-sm font-medium p-2 hover:text-purple-600 bg-transparent justify-start ${
+                          activeSection === route.sectionID && isHomePage
+                            ? "text-purple-600 active"
+                            : "text-black"
+                        } duration-300`}
+                        href={`${BASE_URL}#${route.sectionID}`}
+                        startContent={route.icon}
+                      >
+                        {route.name}
+                      </Button>
+                    );
+                  })}
                 </div>
               </DrawerBody>
             </>
