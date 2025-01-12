@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Image } from "@nextui-org/react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import FsLightbox from "fslightbox-react";
 import BlurFade from "../ui/blur-fade";
+import Image from "next/image";
 
 function GalleryImages({ allImages }) {
   const [lightboxController, setLightboxController] = useState({
@@ -39,12 +39,14 @@ function GalleryImages({ allImages }) {
           >
             <Masonry gutter="16px">
               {allImages.map((item, index) => (
-                <BlurFade key={index} delay={0.25 + index * 0.1} inView>
+                <BlurFade key={index} inView>
                   <Image
                     onClick={() => handleClickImage(index + 1)}
-                    className="w-full max-h-[400px] cursor-pointer"
+                    className="w-full max-h-[400px] cursor-pointer rounded-md"
                     alt="Doç. Dr. Arzu Yurci Galeri"
                     src={item}
+                    width={300}
+                    height={300}
                   />
                 </BlurFade>
               ))}

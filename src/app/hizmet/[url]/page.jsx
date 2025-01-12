@@ -1,5 +1,4 @@
 import React from "react";
-import "moment/locale/tr";
 import { getService } from "@/api/endpoints";
 import ServicesSection from "@/components/sections/ServicesSection";
 
