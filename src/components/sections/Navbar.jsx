@@ -177,6 +177,7 @@ function Navbar() {
         onOpenChange={onOpenChange}
         placement="left"
         size="xs"
+        className="rounded-none"
       >
         <DrawerContent>
           {(onClose) => (
