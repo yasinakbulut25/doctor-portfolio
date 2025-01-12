@@ -28,7 +28,7 @@ export const routes = [
   },
   {
     name: 'Hizmetler',
-    path: 'hizmetler',
+    path: 'hizmet',
     sectionID: 'hizmetler',
     icon: <StethoscopeIcon width={16} color="#9c40ff" />,
     sectionKey: sectionKeys.services,
@@ -50,10 +50,11 @@ export const routes = [
   },
   {
     name: 'Yazılar',
-    path: 'yazilar',
+    path: 'yazi',
     sectionID: 'yazilar',
     icon: <PenIcon width={16} color="#9c40ff" />,
-    sectionKey: sectionKeys.blogs
+    sectionKey: sectionKeys.blogs,
+    hasDropdown: true
   },
   {
     name: 'Foto Galeri',

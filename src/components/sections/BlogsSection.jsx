@@ -28,8 +28,8 @@ async function BlogsSection() {
         icon={<PenIcon className="w-4 h-4" color="#9c40ff" />}
         sectionKey={sectionKeys.blogs}
       />
-      <div className="grid gap-4 md:gap-8 md:grid-cols-2 lg:grid-cols-3 px-4">
-        {activeData.map((post, index) => (
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 px-4">
+        {activeData.slice(-6).map((post, index) => (
           <BlogCard key={index} post={post} index={index} />
         ))}
       </div>

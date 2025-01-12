@@ -48,7 +48,7 @@ async function BlogDetail({ params }) {
 
   return (
     <>
-      <div className="mx-auto w-full max-w-3xl px-4 mb-12">
+      <div className="mx-auto w-full max-w-4xl px-4 mb-12">
         <div className="flex flex-col gap-1">
           <p className="text-sm text-slate-600">
             <time dateTime="2022-02-08" title="February 8th, 2022">
@@ -58,10 +58,14 @@ async function BlogDetail({ params }) {
           <h1 className="mb-4 text-2xl font-extrabold text-gray-900 lg:mb-6 lg:text-4xl">
             {title}
           </h1>
-          <img className="w-max max-w-full lg:max-h-[400px] sm:max-h-[300px] max-h-[200px] object-contain" src={image} alt={title} width={800} height={400} />
+          <img
+            className="w-full max-w-full lg:max-h-[400px] sm:max-h-[300px] max-h-[200px] object-cover rounded-md"
+            src={image}
+            alt={title}
+          />
         </div>
         <div
-          className="article-content"
+          className="article-content mt-3"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </div>

@@ -10,7 +10,7 @@ function BlogCard({ post, index }) {
   const turkishDate = moment(post.date).locale("tr").format("D MMMM, YYYY");
 
   return (
-    <BlurFade delay={0.25 + index * 0.1} inView>
+    <BlurFade inView>
       <Link href={`yazi/${post.url}`}>
         <div className="group flex flex-col gap-3 p-5 rounded-3xl bg-white border border-gray-100 shadow-2xl shadow-gray-600/10">
           <div className="relative overflow-hidden rounded-xl">

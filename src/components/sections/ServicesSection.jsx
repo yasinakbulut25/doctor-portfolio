@@ -48,9 +48,9 @@ async function ServicesSection({ isDetailPage, url }) {
               <div className="relative w-full sm:max-w-full max-w-[400px] mx-auto bg-white shadow-lg hover:scale-105 duration-300 rounded-lg overflow-hidden">
                 <Image
                   className="object-cover w-full max-h-[200px] -z-1"
-                  src={"/uploads/logo.png" || service.image}
-                  width={50}
-                  height={50}
+                  src={service.image}
+                  width={350}
+                  height={200}
                   alt={service.title}
                 />
                 <div className="flex flex-col gap-3 py-4 px-6">

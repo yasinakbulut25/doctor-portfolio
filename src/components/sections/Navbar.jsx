@@ -15,18 +15,23 @@ import { BarsIcon, ChevronRight, XMarkIcon } from "@/icons";
 import { BASE_URL } from "@/app/layout";
 import Image from "next/image";
 import useRoutes from "@/hooks/useRoutes";
-import { getServices } from "@/api/endpoints";
+import { getBlogs, getServices } from "@/api/endpoints";
+import { sectionKeys } from "@/routes";
 
 function Navbar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const [servicesRoutes, setServicesRoutes] = useState([]);
-  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+  const [dropdownRoutes, setDropdownRoutes] = useState({
+    [sectionKeys.services]: false,
+    [sectionKeys.blogs]: false,
+  });
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const pathname = usePathname();
   const routes = useRoutes();
 
   const isHomePage = pathname === "/";
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
@@ -41,15 +46,23 @@ function Navbar() {
 
   useEffect(() => {
     const fetchData = async () => {
+      let dropdownRoutesObject = {};
       try {
-        const data = await getServices();
-        let activeData = data.filter(
+        const services = await getServices();
+        let activeServices = services.filter(
           (item) => Number(item.publish) === 1 && !item.deleted_at
         );
-        setServicesRoutes(activeData);
+        dropdownRoutesObject[sectionKeys.services] = activeServices;
+
+        const blogs = await getBlogs();
+        let activeBlogs = blogs.filter(
+          (item) => Number(item.publish) === 1 && !item.deleted_at
+        );
+        dropdownRoutesObject[sectionKeys.blogs] = activeBlogs;
       } catch (error) {
         console.error("API isteği sırasında bir hata oluştu:", error);
       }
+      setDropdownRoutes(dropdownRoutesObject);
     };
 
     fetchData();
@@ -111,27 +124,34 @@ function Navbar() {
                 } duration-300`}
                 href={`${BASE_URL}#${route.sectionID}`}
                 startContent={route.icon}
-                endContent={route.hasDropdown && <ChevronRight className='w-4 transform rotate-90 text-purple-500' />}
+                endContent={
+                  route.hasDropdown && (
+                    <ChevronRight className="w-4 transform rotate-90 text-purple-500" />
+                  )
+                }
               >
                 {route.name}
               </Button>
-              {route.hasDropdown && servicesRoutes.length > 0 && (
-                <div className="absolute top-[72px] left-0 w-max max-w-[200px] hidden shadow-md group-hover:flex flex-col bg-white">
-                  {servicesRoutes.map((item, index) => (
-                    <Link
-                      key={index}
-                      href={`hizmet/${item.url}`}
-                      className="whitespace-normal text-sm text-black hover:text-purple-500 p-3 border-b border-slate-200"
-                    >
-                      {item.title}
-                    </Link>
-                  ))}
-                </div>
-              )}
+              {route.hasDropdown &&
+                dropdownRoutes[route.sectionKey] &&
+                dropdownRoutes[route.sectionKey].length > 0 && (
+                  <div className="absolute top-[72px] left-0 w-max max-w-[200px] hidden shadow-md group-hover:flex flex-col bg-white">
+                    {dropdownRoutes[route.sectionKey].map((item, index) => (
+                      <Link
+                        key={index}
+                        href={`/${route.path}/${item.url}`}
+                        className="whitespace-normal text-sm text-black hover:text-purple-500 p-3 border-b border-slate-200"
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
             </div>
           ))}
         </div>
       </div>
+      {/* Mobile Menu */}
       <div className="flex justify-between items-center w-full lg:hidden">
         <Button
           className="min-w-max px-3"
@@ -172,7 +192,10 @@ function Navbar() {
                         <div key={index} className="relative">
                           <Button
                             onPress={() =>
-                              setIsServicesDropdownOpen(!isServicesDropdownOpen)
+                              setIsDropdownOpen({
+                                ...isDropdownOpen,
+                                [route.sectionKey]: !isDropdownOpen[route.sectionKey],
+                              })
                             }
                             className={`relative w-full text-sm font-medium p-2 hover:text-purple-600 bg-transparent justify-start ${
                               activeSection === route.sectionID && isHomePage
@@ -184,28 +207,29 @@ function Navbar() {
                             endContent={
                               <ChevronRight
                                 className={`transform ml-auto ${
-                                  isServicesDropdownOpen
-                                    ? "-rotate-90"
-                                    : "rotate-90"
+                                  isDropdownOpen[route.sectionKey] ? "-rotate-90" : "rotate-90"
                                 } w-4 text-purple-500 duration-300`}
                               />
                             }
                           >
                             {route.name}
                           </Button>
-                          {isServicesDropdownOpen &&
-                            servicesRoutes.length > 0 && (
+                          {isDropdownOpen[route.sectionKey] &&
+                            dropdownRoutes[route.sectionKey] &&
+                            dropdownRoutes[route.sectionKey].length > 0 && (
                               <div className="w-full flex group-hover:flex flex-col bg-white pl-3">
-                                {servicesRoutes.map((item, index) => (
-                                  <Link
-                                    onClick={onClose}
-                                    key={index}
-                                    href={`hizmet/${item.url}`}
-                                    className="whitespace-normal text-sm text-black hover:text-purple-500 py-3 border-b border-b-slate-200"
-                                  >
-                                    {item.title}
-                                  </Link>
-                                ))}
+                                {dropdownRoutes[route.sectionKey].map(
+                                  (item, index) => (
+                                    <Link
+                                      onClick={onClose}
+                                      key={index}
+                                      href={`/${route.path}/${item.url}`}
+                                      className="whitespace-normal text-sm text-black hover:text-purple-500 py-3 border-b border-b-slate-200"
+                                    >
+                                      {item.title}
+                                    </Link>
+                                  )
+                                )}
                               </div>
                             )}
                         </div>

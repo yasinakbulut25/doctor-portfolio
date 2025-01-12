@@ -51,11 +51,9 @@ async function ServiceDetail({ params }) {
             {title}
           </h1>
           <img
-            className="w-max max-w-full lg:max-h-[400px] sm:max-h-[300px] max-h-[200px] object-contain"
+            className="w-full max-w-full lg:max-h-[400px] sm:max-h-[300px] max-h-[200px] object-cover rounded-md"
             src={image}
             alt={title}
-            width={800}
-            height={400}
           />
         </div>
         <i className="border-l-2 border-purple-400 pl-3 py-1 text-sm mt-3">
