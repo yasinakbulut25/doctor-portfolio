@@ -43,7 +43,7 @@ async function ServicesSection({ isDetailPage, url }) {
       <SectionTitle sectionKey={sectionKeys.services} />
       <div className="columns-1 sm:columns-2 lg:columns-3">
         {activeData.map((service, index) => (
-          <Link key={index} href={`hizmet/${service.url}`}>
+          <Link key={index} href={`/hizmet/${service.url}`}>
             <BlurFade className="mb-8" inView>
               <div className="relative w-full sm:max-w-full max-w-[400px] mx-auto bg-white shadow-lg hover:scale-105 duration-300 rounded-lg overflow-hidden">
                 <Image

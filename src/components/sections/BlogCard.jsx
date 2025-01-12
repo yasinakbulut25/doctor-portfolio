@@ -11,7 +11,7 @@ function BlogCard({ post, index }) {
 
   return (
     <BlurFade inView>
-      <Link href={`yazi/${post.url}`}>
+      <Link href={`/yazi/${post.url}`}>
         <div className="group flex flex-col gap-3 p-5 rounded-3xl bg-white border border-gray-100 shadow-2xl shadow-gray-600/10">
           <div className="relative overflow-hidden rounded-xl">
             <Image
