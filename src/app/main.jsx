@@ -1,6 +1,7 @@
 import Home from "./Home";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
+import WhatsappButton from "@/components/sections/WhatsappButton";
 
 function Main({ children }) {
   return (
@@ -16,6 +17,7 @@ function Main({ children }) {
       <div className="relative" style={{ zIndex: 9 }}>
         <Navbar />
         <Home>{children}</Home>
+        <WhatsappButton />
         <Footer />
       </div>
     </main>

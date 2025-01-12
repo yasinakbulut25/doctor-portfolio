@@ -42,11 +42,11 @@ function GalleryImages({ allImages }) {
                 <BlurFade key={index} inView>
                   <Image
                     onClick={() => handleClickImage(index + 1)}
-                    className="w-full max-h-[400px] cursor-pointer rounded-md"
+                    className="min-w-full cursor-pointer rounded-md"
                     alt="Doç. Dr. Arzu Yurci Galeri"
                     src={item}
-                    width={300}
-                    height={300}
+                    width={500}
+                    height={500}
                   />
                 </BlurFade>
               ))}

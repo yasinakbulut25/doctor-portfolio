@@ -10,3 +10,4 @@ export { PenIcon } from './PenIcon';
 export { ChevronRight } from './ChevronRight';
 export { HomeIcon } from './HomeIcon';
 export { ImageIcon } from './ImageIcon';
+export { WhatsappIcon } from './WhatsappIcon';

@@ -2,7 +2,6 @@ import SectionTitle from "@/components/sections/SectionTitle";
 import { UserIcon } from "lucide-react";
 import BlurFade from "@/components/ui/blur-fade";
 import Image from "next/image";
-import { BorderBeam } from "@/components/ui/border-beam";
 import CommentsSection from "@/components/sections/CommentsSection";
 import { getUser } from "@/api/endpoints";
 import { sectionKeys } from "@/routes";
@@ -43,7 +42,7 @@ async function AboutPage() {
   const data = await getUser();
   if (!data) return;
 
-  const { content, image } = data.about;
+  const { content, content_long, image } = data.about;
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,8 +53,12 @@ async function AboutPage() {
       <div className="flex flex-col items-center gap-8 mb-12">
         <BlurFade delay={0.5} inView>
           <div
-            className="text-md text-black font-medium mx-auto max-w-4xl text-center text-pretty"
+            className="article-content text-md text-black font-medium max-w-4xl text-pretty"
             dangerouslySetInnerHTML={{ __html: content }}
+          />
+          <div
+            className="article-content text-md text-black font-medium max-w-4xl text-pretty"
+            dangerouslySetInnerHTML={{ __html: content_long }}
           />
         </BlurFade>
         <BlurFade delay={0.75} inView>
@@ -66,13 +69,6 @@ async function AboutPage() {
               alt="Doç. Dr. Arzu Yurci"
               width={500}
               height={500}
-            />
-            <BorderBeam
-              colorFrom="#9c40ff"
-              colorTo="#c084fc"
-              size={200}
-              duration={10}
-              delay={9}
             />
           </div>
         </BlurFade>

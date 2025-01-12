@@ -101,7 +101,7 @@ function Navbar() {
         isScrolled ? "bg-white shadow-md" : "bg-transparent"
       }`}
     >
-      <div className="lg:flex hidden gap-4 items-center mx-auto justify-between w-full max-w-7xl h-full">
+      <div className="xl:flex hidden gap-4 items-center mx-auto justify-between w-full max-w-7xl h-full">
         <div className="flex items-center gap-2">
           <Image
             className="rounded-md object-cover"
@@ -135,7 +135,7 @@ function Navbar() {
               {route.hasDropdown &&
                 dropdownRoutes[route.sectionKey] &&
                 dropdownRoutes[route.sectionKey].length > 0 && (
-                  <div className="absolute top-[72px] left-0 w-max max-w-[200px] hidden shadow-md group-hover:flex flex-col bg-white">
+                  <div className="absolute top-[72px] left-0 w-max max-w-[240px] hidden shadow-md group-hover:flex flex-col bg-white">
                     {dropdownRoutes[route.sectionKey].map((item, index) => (
                       <Link
                         key={index}
@@ -152,7 +152,7 @@ function Navbar() {
         </div>
       </div>
       {/* Mobile Menu */}
-      <div className="flex justify-between items-center w-full lg:hidden">
+      <div className="flex justify-between items-center w-full xl:hidden">
         <Button
           className="min-w-max px-3"
           color="secondary"

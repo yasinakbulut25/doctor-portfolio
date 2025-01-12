@@ -2,7 +2,6 @@ import React from "react";
 import SectionTitle from "./SectionTitle";
 import { ChevronRight, UserIcon } from "@/icons";
 import Image from "next/image";
-import { BorderBeam } from "@/components/ui/border-beam";
 import BlurFade from "@/components/ui/blur-fade";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
@@ -45,18 +44,11 @@ async function AboutSection() {
         <BlurFade delay={0.75} inView>
           <div className="relative mx-auto rounded-lg overflow-hidden">
             <Image
-              className="object-contain w-full h-auto max-h-[350px]"
+              className="object-cover w-full h-auto rounded-lg max-h-[400px]"
               src={image}
               alt="Doç. Dr. Arzu Yurci"
               width={500}
               height={500}
-            />
-            <BorderBeam
-              colorFrom="#9c40ff"
-              colorTo="#c084fc"
-              size={200}
-              duration={10}
-              delay={9}
             />
           </div>
         </BlurFade>
