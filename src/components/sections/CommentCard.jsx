@@ -20,7 +20,8 @@ function CommentCard({ review, isCommentsPage }) {
           <p className="text-xs text-slate-600">{turkishDate}</p>
         </div>
       </div>
-      <blockquote className="mt-2 text-sm text-black">{description}</blockquote>
+        
+      <blockquote className={`mt-2 text-sm text-black ${!isCommentsPage && "truncate-text truncate-3"}`}>{description}</blockquote>
     </figure>
   );
 }
