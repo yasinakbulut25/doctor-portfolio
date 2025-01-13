@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <head>
         <meta
           name="keywords"
-          content="Kadın Hastalıkları, Tüp Bebek, Gebelik Takibi, Doğum Uzmanı, Kadın Sağlığı, Kısırlık Tedavisi, Riskli Gebelik, Jinekolog"
+          content="Arzu Yurci, Dr. Arzu Yurci, Kadın Hastalıkları, Tüp Bebek, Gebelik Takibi, Doğum Uzmanı, Kadın Sağlığı, Kısırlık Tedavisi, Riskli Gebelik, Jinekolog"
         />
         <meta property="og:image" content="/uploads/page.png" />
         <meta property="og:type" content="website" />
