@@ -3,6 +3,7 @@ import { ImageIcon } from "@/icons";
 import { sectionKeys } from "@/routes";
 import GalleryImages from "./GalleryImages";
 import { getGallery, getSections } from "@/api/endpoints";
+import { proxyImage } from "@/api/proxyImage";
 
 async function Gallery() {
   const data = await getGallery();
@@ -18,7 +19,7 @@ async function Gallery() {
   if (!activeData || activeData.length === 0 || !section) return null;
 
   const allImages = [];
-  activeData.map((item) => allImages.push(item.image));
+  activeData.map((item) => allImages.push(proxyImage(item.image)));
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 mb-12" id="galeri">
